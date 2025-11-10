@@ -1,33 +1,58 @@
-````markdown
 # URL-Based API Versioning (Controllers)
 
 This implementation uses URL segment versioning where the API version is part of the URL path with ASP.NET Core Controllers.
 
+## Project Structure
+
+Controllers are organized by version in separate folders:
+
+```
+Controllers/
+├── V1/
+│   ├── UsersController.cs    (handles /api/v1/users)
+│   └── ScoresController.cs   (handles /api/v1/scores)
+├── V2/
+│   ├── UsersController.cs    (handles /api/v2/users)
+│   └── ScoresController.cs   (handles /api/v2/scores)
+└── UsersVersionNeutralController.cs  (handles /api/users - no version)
+```
+
 ## Configuration
 
 ```csharp
-x.ApiVersionReader = new UrlSegmentApiVersionReader();
+options.ApiVersionReader = new UrlSegmentApiVersionReader();
 options.SubstituteApiVersionInUrl = true;
 ```
 
 ## Controller Implementation
 
-Controllers use the `[Route]` attribute with a version placeholder, `[ApiVersion]` on the controller, and `[MapToApiVersion]` on action methods:
+Each version has its own dedicated controller in a namespace folder. Controllers use `[ApiVersion]` to declare their version:
 
+**V1 Controller:**
 ```csharp
+namespace url_versioning.Controllers.V1;
+
 [ApiController]
 [Route("api/v{version:apiVersion}/users")]
 [ApiVersion(1.0)]
+public class UsersController : ControllerBase
+{
+    [HttpGet]
+    public ActionResult<Userv1[]> Get() { ... }
+}
+```
+
+**V2 Controller:**
+```csharp
+namespace url_versioning.Controllers.V2;
+
+[ApiController]
+[Route("api/v{version:apiVersion}/users")]
 [ApiVersion(2.0)]
 public class UsersController : ControllerBase
 {
     [HttpGet]
-    [MapToApiVersion(1.0)]
-    public IActionResult GetV1() { ... }
-
-    [HttpGet]
-    [MapToApiVersion(2.0)]
-    public IActionResult GetV2() { ... }
+    public ActionResult<Userv2[]> Get() { ... }
 }
 ```
 
@@ -43,6 +68,14 @@ public class UsersVersionNeutralController : ControllerBase
     public IActionResult Delete(int id) { ... }
 }
 ```
+
+## Benefits of This Approach
+
+- **Clear separation**: Each version is isolated in its own folder
+- **Easy maintenance**: Version-specific changes don't affect other versions
+- **Scalability**: Adding new versions is straightforward
+- **Team collaboration**: Different developers can work on different versions
+- **Code organization**: Related version code stays together
 
 ## Running
 
@@ -70,5 +103,4 @@ dotnet run
 - RESTful approach
 - Version is immediately visible in logs and monitoring
 - Familiar controller-based structure
-
-````
+- Clean separation of concerns with folder organization
