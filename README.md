@@ -12,7 +12,7 @@ Minimal API implementations using `Asp.Versioning.Http`
 ### [controllers/](./controllers)
 Controller-based implementations using `Asp.Versioning.Mvc`
 - **[queryheader-versioning/](./controllers/queryheader-versioning)** - Query string or HTTP header versioning (Port 5001)
-- **[url-versioning/](./controllers/url-versioning)** - URL segment versioning (Port 5000)
+- **[url-versioning/](./controllers/url-versioning)** - URL segment versioning with V1/V2 folder structure (Port 5000)
 
 ## 🎯 Versioning Strategies
 

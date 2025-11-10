@@ -4,57 +4,20 @@ This implementation uses query parameters or HTTP headers for API versioning wit
 
 ## Configuration
 
-Default is query string:
-```csharp
-options.ApiVersionReader = new QueryStringApiVersionReader("api-version");
-```
+The default configuration uses query strings, but can be switched to headers or both. See `Program.cs` for configuration options:
+- Query string: `?api-version=1.0`
+- HTTP header: `x-api-version: 1.0`
+- Or combine both methods
 
-Alternative header-based:
-```csharp
-options.ApiVersionReader = new HeaderApiVersionReader("x-api-version");
-```
+## Implementation Approach
 
-Or combine both:
-```csharp
-options.ApiVersionReader = ApiVersionReader.Combine(
-    new QueryStringApiVersionReader("api-version"),
-    new HeaderApiVersionReader("x-api-version")
-);
-```
+Minimal APIs use:
+- `NewVersionedApi()` to create a versioned API group
+- `MapGroup()` to define route groups
+- `HasApiVersion()` to assign versions to groups
+- `IsApiVersionNeutral()` for version-independent endpoints
 
-## Minimal API Implementation
-
-Minimal APIs use `MapGroup()` and `HasApiVersion()` to define versioned endpoints:
-
-```csharp
-var usersApi = app.NewVersionedApi("Users");
-
-var usersv1 = usersApi.MapGroup("api/users")
-    .HasApiVersion(1.0);
-
-var usersv2 = usersApi.MapGroup("api/users")
-    .HasApiVersion(2.0);
-
-usersv1.MapGet("", () =>
-{
-    return TypedResults.Ok(new[]
-    {
-        new Userv1(1, "John Doe", "johndoe@example.com"),
-        new Userv1(2, "Alice Dewett", "alice@example.com"),
-    });
-});
-```
-
-For version-neutral endpoints:
-```csharp
-var usersNeutral = usersApi.MapGroup("api/users")
-    .IsApiVersionNeutral();
-
-usersNeutral.MapDelete("{id:int}", (int id) =>
-{
-    return TypedResults.NoContent();
-});
-```
+Check the source code in `Program.cs` to see the full implementation.
 
 ## Running
 
@@ -62,24 +25,25 @@ usersNeutral.MapDelete("{id:int}", (int id) =>
 dotnet run
 ```
 
-## Example URLs (Query String)
+## Example Requests
 
-- **Users v1**: `GET http://localhost:5001/api/users?api-version=1.0`
-- **Users v2**: `GET http://localhost:5001/api/users?api-version=2.0`
-- **Scores v1**: `GET http://localhost:5001/api/scores?api-version=1.0`
-- **Scores v2**: `GET http://localhost:5001/api/scores?api-version=2.0`
-- **Delete User**: `DELETE http://localhost:5001/api/users/{id}` (version-neutral endpoint)
+Use the included `.http` files to test:
+- `querystring.http` - Query string versioning examples
+- `header.http` - HTTP header versioning examples
 
-## Example with Header
+### Query String Examples
+- Users v1: `GET http://localhost:5001/api/users?api-version=1.0`
+- Users v2: `GET http://localhost:5001/api/users?api-version=2.0`
+- Scores v1: `GET http://localhost:5001/api/scores?api-version=1.0`
+- Scores v2: `GET http://localhost:5001/api/scores?api-version=2.0`
 
-```bash
-curl -H "x-api-version: 1.0" http://localhost:5001/api/users
-```
+### Version-Neutral Endpoint
+- Delete User: `DELETE http://localhost:5001/api/users/{id}`
 
-## OpenAPI
+## OpenAPI Documents
 
-- **v1 OpenAPI**: `GET http://localhost:5001/openapi/v1.json`
-- **v2 OpenAPI**: `GET http://localhost:5001/openapi/v2.json`
+- v1: `GET http://localhost:5001/openapi/v1.json`
+- v2: `GET http://localhost:5001/openapi/v2.json`
 
 ## Benefits
 

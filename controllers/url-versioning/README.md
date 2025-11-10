@@ -4,72 +4,36 @@ This implementation uses URL segment versioning where the API version is part of
 
 ## Project Structure
 
-Controllers are organized by version in separate folders:
+Controllers are organized by version in separate folders for better maintainability:
 
 ```
 Controllers/
 ├── V1/
-│   ├── UsersController.cs    (handles /api/v1/users)
-│   └── ScoresController.cs   (handles /api/v1/scores)
+│   ├── UsersController.cs
+│   └── ScoresController.cs
 ├── V2/
-│   ├── UsersController.cs    (handles /api/v2/users)
-│   └── ScoresController.cs   (handles /api/v2/scores)
-└── UsersVersionNeutralController.cs  (handles /api/users - no version)
+│   ├── UsersController.cs
+│   └── ScoresController.cs
+└── UsersVersionNeutralController.cs
 ```
 
 ## Configuration
 
-```csharp
-options.ApiVersionReader = new UrlSegmentApiVersionReader();
-options.SubstituteApiVersionInUrl = true;
-```
+Uses `UrlSegmentApiVersionReader()` with `SubstituteApiVersionInUrl = true`. See `Program.cs` for full configuration.
 
-## Controller Implementation
+## Implementation Approach
 
-Each version has its own dedicated controller in a namespace folder. Controllers use `[ApiVersion]` to declare their version:
+Controllers use:
+- `[ApiVersion]` attribute on the controller class to declare the version
+- `[Route]` with `{version:apiVersion}` placeholder for versioned routes
+- `[ApiVersionNeutral]` for version-independent endpoints
+- Namespace folders (V1, V2) to organize versions
 
-**V1 Controller:**
-```csharp
-namespace url_versioning.Controllers.V1;
+Each version is completely isolated in its own folder/namespace, making it easy to maintain and evolve versions independently.
 
-[ApiController]
-[Route("api/v{version:apiVersion}/users")]
-[ApiVersion(1.0)]
-public class UsersController : ControllerBase
-{
-    [HttpGet]
-    public ActionResult<Userv1[]> Get() { ... }
-}
-```
+Check the controller classes in the `Controllers/V1/` and `Controllers/V2/` folders to see the full implementation.
 
-**V2 Controller:**
-```csharp
-namespace url_versioning.Controllers.V2;
-
-[ApiController]
-[Route("api/v{version:apiVersion}/users")]
-[ApiVersion(2.0)]
-public class UsersController : ControllerBase
-{
-    [HttpGet]
-    public ActionResult<Userv2[]> Get() { ... }
-}
-```
-
-For version-neutral endpoints, use a separate controller without the version placeholder:
-
-```csharp
-[ApiController]
-[ApiVersionNeutral]
-[Route("api/users")]
-public class UsersVersionNeutralController : ControllerBase
-{
-    [HttpDelete("{id:int}")]
-    public IActionResult Delete(int id) { ... }
-}
-```
-
-## Benefits of This Approach
+## Benefits of Folder Structure
 
 - **Clear separation**: Each version is isolated in its own folder
 - **Easy maintenance**: Version-specific changes don't affect other versions
@@ -83,18 +47,23 @@ public class UsersVersionNeutralController : ControllerBase
 dotnet run
 ```
 
-## Example URLs
+## Example Requests
 
-- **Users v1**: `GET http://localhost:5000/api/v1/users`
-- **Users v2**: `GET http://localhost:5000/api/v2/users`
-- **Scores v1**: `GET http://localhost:5000/api/v1/scores`
-- **Scores v2**: `GET http://localhost:5000/api/v2/scores`
-- **Delete User**: `DELETE http://localhost:5000/api/users/{id}` (version-neutral endpoint)
+Use the included `url-versioning.http` file to test all endpoints.
 
-## OpenAPI
+### URL Examples
+- Users v1: `GET http://localhost:5000/api/v1/users`
+- Users v2: `GET http://localhost:5000/api/v2/users`
+- Scores v1: `GET http://localhost:5000/api/v1/scores`
+- Scores v2: `GET http://localhost:5000/api/v2/scores`
 
-- **v1 OpenAPI**: `GET http://localhost:5000/openapi/v1.json`
-- **v2 OpenAPI**: `GET http://localhost:5000/openapi/v2.json`
+### Version-Neutral Endpoint
+- Delete User: `DELETE http://localhost:5000/api/users/{id}`
+
+## OpenAPI Documents
+
+- v1: `GET http://localhost:5000/openapi/v1.json`
+- v2: `GET http://localhost:5000/openapi/v2.json`
 
 ## Benefits
 

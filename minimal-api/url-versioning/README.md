@@ -4,44 +4,17 @@ This implementation uses URL segment versioning where the API version is part of
 
 ## Configuration
 
-```csharp
-options.ApiVersionReader = new UrlSegmentApiVersionReader();
-options.SubstituteApiVersionInUrl = true;
-```
+Uses `UrlSegmentApiVersionReader()` with `SubstituteApiVersionInUrl = true`. See `Program.cs` for full configuration.
 
-## Minimal API Implementation
+## Implementation Approach
 
-Minimal APIs use `MapGroup()` with the version placeholder `{version:apiVersion}` and `HasApiVersion()`:
+Minimal APIs use:
+- `NewVersionedApi()` to create a versioned API group
+- `MapGroup()` with `{version:apiVersion}` placeholder in routes
+- `HasApiVersion()` to assign versions to groups
+- `IsApiVersionNeutral()` for version-independent endpoints
 
-```csharp
-var usersApi = app.NewVersionedApi("Users");
-
-var usersv1 = usersApi.MapGroup("api/v{version:apiVersion}/users")
-    .HasApiVersion(1.0);
-
-var usersv2 = usersApi.MapGroup("api/v{version:apiVersion}/users")
-    .HasApiVersion(2.0);
-
-usersv1.MapGet("", () =>
-{
-    return TypedResults.Ok(new[]
-    {
-        new Userv1(1, "John Doe", "johndoe@example.com"),
-        new Userv1(2, "Alice Dewett", "alice@example.com"),
-    });
-});
-```
-
-For version-neutral endpoints, use a route without the version placeholder:
-```csharp
-var usersNeutral = usersApi.MapGroup("api/users")
-    .IsApiVersionNeutral();
-
-usersNeutral.MapDelete("{id:int}", (int id) =>
-{
-    return TypedResults.NoContent();
-});
-```
+Check the source code in `Program.cs` to see the full implementation.
 
 ## Running
 
@@ -49,18 +22,23 @@ usersNeutral.MapDelete("{id:int}", (int id) =>
 dotnet run
 ```
 
-## Example URLs
+## Example Requests
 
-- **Users v1**: `GET http://localhost:5000/api/v1/users`
-- **Users v2**: `GET http://localhost:5000/api/v2/users`
-- **Scores v1**: `GET http://localhost:5000/api/v1/scores`
-- **Scores v2**: `GET http://localhost:5000/api/v2/scores`
-- **Delete User**: `DELETE http://localhost:5000/api/users/{id}` (version-neutral endpoint)
+Use the included `url-versioning.http` file to test all endpoints.
 
-## OpenAPI
+### URL Examples
+- Users v1: `GET http://localhost:5000/api/v1/users`
+- Users v2: `GET http://localhost:5000/api/v2/users`
+- Scores v1: `GET http://localhost:5000/api/v1/scores`
+- Scores v2: `GET http://localhost:5000/api/v2/scores`
 
-- **v1 OpenAPI**: `GET http://localhost:5000/openapi/v1.json`
-- **v2 OpenAPI**: `GET http://localhost:5000/openapi/v2.json`
+### Version-Neutral Endpoint
+- Delete User: `DELETE http://localhost:5000/api/users/{id}`
+
+## OpenAPI Documents
+
+- v1: `GET http://localhost:5000/openapi/v1.json`
+- v2: `GET http://localhost:5000/openapi/v2.json`
 
 ## Benefits
 
