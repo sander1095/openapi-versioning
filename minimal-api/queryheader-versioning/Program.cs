@@ -1,20 +1,47 @@
+using Asp.Versioning;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi("v1");
 builder.Services.AddOpenApi("v2");
 
-builder.Services.AddApiVersioning(x =>
+builder.Services.AddApiVersioning(options =>
 {
-    x.ReportApiVersions = true;
+    // Supported/deprecated API versions will be reported in response headers
+    // This is optional, but can be useful for clients to understand what versions are available
+    // or for logging and analytics purposes
+    options.ReportApiVersions = true;
+
+    // Set the default API version to 1.0 explicitly
+    // This is already set to 1.0 by default, but shown here for demonstration 
+    options.DefaultApiVersion = new ApiVersion(1, 0);
+
+    // If the user does not specify a version, you can let the API use the default version
+    // This is disabled by default.
+    // Enabling this feature is a trade-off between convenience and explicitness.
+    // Changing the default version could break clients that aren't using versioning.
+    // Consider your API's audience and usage patterns when deciding to enable this.
+    options.AssumeDefaultVersionWhenUnspecified = false;
+
+    // API versioning by query string (default approach)
+    // Using query string: ?api-version=1.0
+    options.ApiVersionReader = new QueryStringApiVersionReader("api-version");
+
+    // Alternative: API versioning by HTTP header
+    // Uncomment the line below to use header-based versioning instead
+    // options.ApiVersionReader = new HeaderApiVersionReader("x-api-version");
+
+    // You can also combine multiple readers
+    // options.ApiVersionReader = ApiVersionReader.Combine(
+    //     new QueryStringApiVersionReader("api-version"),
+    //     new HeaderApiVersionReader("x-api-version")
+    // );
 })
 .AddApiExplorer(options =>
 {
     // add the versioned api explorer, which also adds IApiVersionDescriptionProvider service
     // note: the specified format code will format the version as "'v'major[.minor][-status]"
     options.GroupNameFormat = "'v'VVV";
-    // note: this option is only necessary when versioning by url segment. the SubstitutionFormat
-    // can also be used to control the format of the API version in route templates
-    options.SubstituteApiVersionInUrl = true;
 });
 
 var app = builder.Build();
@@ -24,12 +51,12 @@ app.MapOpenApi();
 var usersApi = app.NewVersionedApi("Users");
 var scoresApi = app.NewVersionedApi("Scores");
 
-
 // --------- Users API ---------
-var usersv1 = usersApi.MapGroup("api/v{version:apiVersion}/users")
+// Note: No version placeholder in URL path
+var usersv1 = usersApi.MapGroup("api/users")
     .HasApiVersion(1.0);
 
-var usersv2 = usersApi.MapGroup("api/v{version:apiVersion}/users")
+var usersv2 = usersApi.MapGroup("api/users")
     .HasApiVersion(2.0);
 
 var usersNeutral = usersApi.MapGroup("api/users")
@@ -62,10 +89,10 @@ usersNeutral.MapDelete("{id:int}", (int id) =>
 
 
 // --------- Scores API ---------
-var scoresv1 = usersApi.MapGroup("api/v{version:apiVersion}/scores")
+var scoresv1 = scoresApi.MapGroup("api/scores")
     .HasApiVersion(1.0);
 
-var scoresv2 = usersApi.MapGroup("api/v{version:apiVersion}/scores")
+var scoresv2 = scoresApi.MapGroup("api/scores")
     .HasApiVersion(2.0);
 
 scoresv1.MapGet("", () =>
@@ -86,13 +113,11 @@ scoresv2.MapGet("", () =>
     });
 });
 
+
 app.Run();
 
 record Userv1(int Id, string Name, string Email);
 record Userv2(int Id, string Name, string Email, DateOnly BirthDate);
 
-
-
 record Scorev1(int UserId, int Score);
 record Scorev2(int UserId, int Score, DateTimeOffset AchievedOn);
-

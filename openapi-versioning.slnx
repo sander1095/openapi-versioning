@@ -1,0 +1,11 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/minimal-api/">
+    <Project Path="minimal-api/queryheader-versioning/queryheader-versioning.csproj" />
+    <Project Path="minimal-api/url-versioning/url-versioning.csproj" />
+  </Folder>
+</Solution>
