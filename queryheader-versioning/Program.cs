@@ -7,28 +7,101 @@ builder.Services.ConfigureHttpJsonOptions(options =>
     options.SerializerOptions.TypeInfoResolverChain.Insert(0, AppJsonSerializerContext.Default);
 });
 
+builder.Services.AddOpenApi("v1");
+builder.Services.AddOpenApi("v2");
+
+builder.Services.AddApiVersioning(x =>
+{
+    x.ReportApiVersions = true;
+})
+.AddApiExplorer(options =>
+{
+    // add the versioned api explorer, which also adds IApiVersionDescriptionProvider service
+    // note: the specified format code will format the version as "'v'major[.minor][-status]"
+    options.GroupNameFormat = "'v'VVV";
+});
+
 var app = builder.Build();
 
-var sampleTodos = new Todo[] {
-    new(1, "Walk the dog"),
-    new(2, "Do the dishes", DateOnly.FromDateTime(DateTime.Now)),
-    new(3, "Do the laundry", DateOnly.FromDateTime(DateTime.Now.AddDays(1))),
-    new(4, "Clean the bathroom"),
-    new(5, "Clean the car", DateOnly.FromDateTime(DateTime.Now.AddDays(2)))
-};
+app.MapOpenApi();
 
-var todosApi = app.MapGroup("/todos");
-todosApi.MapGet("/", () => sampleTodos);
-todosApi.MapGet("/{id}", (int id) =>
-    sampleTodos.FirstOrDefault(a => a.Id == id) is { } todo
-        ? Results.Ok(todo)
-        : Results.NotFound());
+var usersApi = app.NewVersionedApi("Users");
+var scoresApi = app.NewVersionedApi("Scores");
+
+
+// --------- Users API ---------
+var usersv1 = usersApi.MapGroup("api/users")
+    .HasApiVersion(1.0);
+
+var usersv2 = usersApi.MapGroup("api/users")
+    .HasApiVersion(2.0);
+
+var usersNeutral = usersApi.MapGroup("api/users")
+    .IsApiVersionNeutral();
+
+usersv1.MapGet("", () =>
+{
+    return TypedResults.Ok(new[]
+    {
+        new Userv1(1, "John Doe", "johndoe@example.com"),
+        new Userv1(2, "Alice Dewett", "alice@example.com"),
+    });
+});
+
+usersv2.MapGet("", () =>
+{
+    return TypedResults.Ok(new[]
+    {
+        new Userv2(1, "John Doe", "johndoe@example.com", new DateOnly(1990, 1, 1)),
+        new Userv2(2, "Alice Dewett", "alice@example.com", new DateOnly(1992, 2, 2)),
+    });
+});
+
+usersNeutral.MapDelete("{id:int}", (int id) =>
+{
+    // Delete user logic here
+    return TypedResults.NoContent();
+})
+.IsApiVersionNeutral();
+
+
+// --------- Scores API ---------
+var scoresv1 = scoresApi.MapGroup("api/scores")
+    .HasApiVersion(1.0);
+
+var scoresv2 = scoresApi.MapGroup("api/scores")
+    .HasApiVersion(2.0);
+
+scoresv1.MapGet("", () =>
+{
+    return TypedResults.Ok(new Scorev1[]
+    {
+        new(1, 100),
+        new(2, 150)
+    });
+});
+
+scoresv2.MapGet("", () =>
+{
+    return TypedResults.Ok(new Scorev2[]
+    {
+        new(1, 100, DateTimeOffset.UtcNow.AddDays(-2)),
+        new(2, 150, DateTimeOffset.UtcNow.AddDays(-1))
+    });
+});
 
 app.Run();
 
-public record Todo(int Id, string? Title, DateOnly? DueBy = null, bool IsComplete = false);
+record Userv1(int Id, string Name, string Email);
+record Userv2(int Id, string Name, string Email, DateOnly BirthDate);
 
-[JsonSerializable(typeof(Todo[]))]
+record Scorev1(int UserId, int Score);
+record Scorev2(int UserId, int Score, DateTimeOffset AchievedOn);
+
+[JsonSerializable(typeof(Userv1[]))]
+[JsonSerializable(typeof(Userv2[]))]
+[JsonSerializable(typeof(Scorev1[]))]
+[JsonSerializable(typeof(Scorev2[]))]
 internal partial class AppJsonSerializerContext : JsonSerializerContext
 {
 
