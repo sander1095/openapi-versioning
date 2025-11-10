@@ -1,11 +1,59 @@
 @queryheader_versioning_HostAddress = http://localhost:5024
 
-GET {{queryheader_versioning_HostAddress}}/todos/
+### Test Users API v1 with query string
+GET {{queryheader_versioning_HostAddress}}/api/users?api-version=1.0
 Accept: application/json
 
 ###
 
-GET {{queryheader_versioning_HostAddress}}/todos/1
+### Test Users API v2 with query string
+GET {{queryheader_versioning_HostAddress}}/api/users?api-version=2.0
+Accept: application/json
+
+###
+
+### Test Users API v1 with header
+GET {{queryheader_versioning_HostAddress}}/api/users
+Accept: application/json
+X-Api-Version: 1.0
+
+###
+
+### Test Users API v2 with header
+GET {{queryheader_versioning_HostAddress}}/api/users
+Accept: application/json
+X-Api-Version: 2.0
+
+###
+
+### Test Scores API v1 with query string
+GET {{queryheader_versioning_HostAddress}}/api/scores?api-version=1.0
+Accept: application/json
+
+###
+
+### Test Scores API v2 with query string
+GET {{queryheader_versioning_HostAddress}}/api/scores?api-version=2.0
+Accept: application/json
+
+###
+
+### Test Scores API v1 with header
+GET {{queryheader_versioning_HostAddress}}/api/scores
+Accept: application/json
+X-Api-Version: 1.0
+
+###
+
+### Test Scores API v2 with header
+GET {{queryheader_versioning_HostAddress}}/api/scores
+Accept: application/json
+X-Api-Version: 2.0
+
+###
+
+### Test version-neutral DELETE endpoint
+DELETE {{queryheader_versioning_HostAddress}}/api/users/1
 Accept: application/json
 
 ###

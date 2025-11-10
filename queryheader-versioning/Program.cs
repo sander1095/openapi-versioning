@@ -13,6 +13,10 @@ builder.Services.AddOpenApi("v2");
 builder.Services.AddApiVersioning(x =>
 {
     x.ReportApiVersions = true;
+    x.ApiVersionReader = Asp.Versioning.ApiVersionReader.Combine(
+        new Asp.Versioning.QueryStringApiVersionReader(),
+        new Asp.Versioning.HeaderApiVersionReader("X-Api-Version")
+    );
 })
 .AddApiExplorer(options =>
 {
