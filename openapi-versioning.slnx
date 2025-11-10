@@ -4,7 +4,15 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Folder Name="/minimal-api/">
+  <Folder Name="/docs/">
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/src/" />
+  <Folder Name="/src/controllers/">
+    <Project Path="controllers/queryheader-versioning/queryheader-versioning.csproj" />
+    <Project Path="controllers/url-versioning/url-versioning.csproj" />
+  </Folder>
+  <Folder Name="/src/minimal-api/">
     <Project Path="minimal-api/queryheader-versioning/queryheader-versioning.csproj" />
     <Project Path="minimal-api/url-versioning/url-versioning.csproj" />
   </Folder>

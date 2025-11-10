@@ -1,69 +1,113 @@
-# API Versioning Examples
+# API Versioning Examples for ASP.NET Core
 
-This solution demonstrates different API versioning strategies in ASP.NET Core 10 Minimal APIs.
+This repository demonstrates different API versioning strategies in ASP.NET Core 10 using both **Minimal APIs** and **Controllers**.
 
-## Projects
+## 📁 Repository Structure
 
-### 1. **url-versioning** - URL Segment Versioning
-API version is embedded in the URL path (e.g., `/api/v1/users`, `/api/v2/users`)
+### [minimal-api/](./minimal-api)
+Minimal API implementations using `Asp.Versioning.Http`
+- **[queryheader-versioning/](./minimal-api/queryheader-versioning)** - Query string or HTTP header versioning (Port 5001)
+- **[url-versioning/](./minimal-api/url-versioning)** - URL segment versioning (Port 5000)
 
-- Port: `http://localhost:5000`
-- [See url-versioning/README.md](url-versioning/README.md)
+### [controllers/](./controllers)
+Controller-based implementations using `Asp.Versioning.Mvc`
+- **[queryheader-versioning/](./controllers/queryheader-versioning)** - Query string or HTTP header versioning (Port 5001)
+- **[url-versioning/](./controllers/url-versioning)** - URL segment versioning (Port 5000)
 
-### 2. **queryheader-versioning** - Query Parameter or Header Versioning
-API version is passed via query string (e.g., `/api/users?api-version=1.0`) or HTTP header
+## 🎯 Versioning Strategies
 
-- Port: `http://localhost:5001`
-- [See queryheader-versioning/README.md](queryheader-versioning/README.md)
+### 1. URL Segment Versioning
+Version is embedded in the URL path: `/api/v1/users`, `/api/v2/users`
+- **Port**: 5000
+- **Benefits**: Clear, cacheable, RESTful
+- **Configuration**: `UrlSegmentApiVersionReader()`
 
-## Running the Examples
+### 2. Query String / Header Versioning
+Version passed via query parameter or HTTP header
+- **Port**: 5001
+- **Query**: `/api/users?api-version=1.0`
+- **Header**: `x-api-version: 1.0`
+- **Benefits**: Clean URLs, flexible, supports multiple methods
+- **Configuration**: `QueryStringApiVersionReader()` or `HeaderApiVersionReader()`
 
-Navigate to either project directory and run:
+## 🚀 Quick Start
+
+Navigate to any project and run:
 
 ```bash
-cd url-versioning
+# Minimal API - Query/Header versioning
+cd minimal-api/queryheader-versioning
+dotnet run
+
+# Minimal API - URL versioning
+cd minimal-api/url-versioning
+dotnet run
+
+# Controllers - Query/Header versioning
+cd controllers/queryheader-versioning
+dotnet run
+
+# Controllers - URL versioning
+cd controllers/url-versioning
 dotnet run
 ```
 
-Or:
+## 📊 Implementation Comparison
 
-```bash
-cd queryheader-versioning
-dotnet run
+| Feature | Minimal APIs | Controllers |
+|---------|-------------|-------------|
+| **Package** | `Asp.Versioning.Http` | `Asp.Versioning.Mvc` |
+| **Version Declaration** | `HasApiVersion(1.0)` on groups | `[ApiVersion(1.0)]` on controller |
+| **Version Mapping** | `HasApiVersion()` on groups | `[MapToApiVersion(1.0)]` on actions |
+| **Version Neutral** | `IsApiVersionNeutral()` | `[ApiVersionNeutral]` |
+| **Routing** | `MapGroup()` with route templates | `[Route]` attributes |
+| **Endpoints** | Lambda expressions or local functions | Action methods returning `IActionResult` |
+
+## 🧪 Testing
+
+Each project includes:
+- `.http` files for REST Client (VS Code) or Visual Studio
+- OpenAPI documents at `/openapi/v1.json` and `/openapi/v2.json`
+- Identical endpoint behavior across both implementations
+
+### Example Endpoints
+
+**URL Versioning (Port 5000):**
+```
+GET http://localhost:5000/api/v1/users
+GET http://localhost:5000/api/v2/users
+GET http://localhost:5000/api/v1/scores
+GET http://localhost:5000/api/v2/scores
+DELETE http://localhost:5000/api/users/1  (version-neutral)
 ```
 
-Or run both from the solution file:
-
-```bash
-dotnet build
+**Query/Header Versioning (Port 5001):**
+```
+GET http://localhost:5001/api/users?api-version=1.0
+GET http://localhost:5001/api/users?api-version=2.0
+GET http://localhost:5001/api/scores?api-version=1.0
+GET http://localhost:5001/api/scores?api-version=2.0
+DELETE http://localhost:5001/api/users/1  (version-neutral)
 ```
 
-## Key Differences
+## 🛠 Technology Stack
 
-| Feature | URL-Based | Query/Header-Based |
-|---------|-----------|-------------------|
-| URL Pattern | `/api/v{version}/resource` | `/api/resource?api-version=1.0` |
-| Configuration | `UrlSegmentApiVersionReader` | `QueryStringApiVersionReader` or `HeaderApiVersionReader` |
-| URL Clarity | ✅ Version visible in URL | ❌ Version in query/header |
-| Caching | ✅ Easy to cache | ⚠️ Requires cache-key consideration |
-| Flexibility | ⚠️ URL structure changes | ✅ Same URL for all versions |
+- **.NET**: 10.0 (Preview)
+- **API Versioning**: 8.1.0
+  - `Asp.Versioning.Http` (Minimal APIs)
+  - `Asp.Versioning.Mvc` (Controllers)
+  - `Asp.Versioning.Mvc.ApiExplorer` (OpenAPI integration)
+- **OpenAPI**: Microsoft.AspNetCore.OpenApi 10.0.0-rc.2
 
-## Technology Stack
+## 📚 API Versions
 
-- .NET 10.0
-- ASP.NET Core Minimal APIs
-- Asp.Versioning.Http 8.1.0
-- Asp.Versioning.Mvc.ApiExplorer 8.1.0
-- Microsoft.AspNetCore.OpenApi (RC)
+All projects implement:
+- **Users API**: v1 (Id, Name, Email) → v2 (adds BirthDate)
+- **Scores API**: v1 (UserId, Score) → v2 (adds AchievedOn timestamp)
+- **Version-neutral DELETE**: Works with any or no version
 
-## Testing the APIs
+## 📖 Learn More
 
-Both projects expose OpenAPI specifications:
-
-- **URL Versioning**: 
-  - v1: http://localhost:5000/openapi/v1.json
-  - v2: http://localhost:5000/openapi/v2.json
-
-- **Query/Header Versioning**:
-  - v1: http://localhost:5001/openapi/v1.json
-  - v2: http://localhost:5001/openapi/v2.json
+- [ASP.NET API Versioning Wiki](https://github.com/dotnet/aspnet-api-versioning/wiki)
+- [API Versioning in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/web-api/versioning)
+- [Minimal APIs Overview](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis)

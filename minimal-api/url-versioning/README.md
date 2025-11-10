@@ -1,12 +1,46 @@
-# URL-Based API Versioning
+# URL-Based API Versioning (Minimal APIs)
 
-This implementation uses URL segment versioning where the API version is part of the URL path.
+This implementation uses URL segment versioning where the API version is part of the URL path with ASP.NET Core Minimal APIs.
 
 ## Configuration
 
 ```csharp
-x.ApiVersionReader = new UrlSegmentApiVersionReader();
+options.ApiVersionReader = new UrlSegmentApiVersionReader();
 options.SubstituteApiVersionInUrl = true;
+```
+
+## Minimal API Implementation
+
+Minimal APIs use `MapGroup()` with the version placeholder `{version:apiVersion}` and `HasApiVersion()`:
+
+```csharp
+var usersApi = app.NewVersionedApi("Users");
+
+var usersv1 = usersApi.MapGroup("api/v{version:apiVersion}/users")
+    .HasApiVersion(1.0);
+
+var usersv2 = usersApi.MapGroup("api/v{version:apiVersion}/users")
+    .HasApiVersion(2.0);
+
+usersv1.MapGet("", () =>
+{
+    return TypedResults.Ok(new[]
+    {
+        new Userv1(1, "John Doe", "johndoe@example.com"),
+        new Userv1(2, "Alice Dewett", "alice@example.com"),
+    });
+});
+```
+
+For version-neutral endpoints, use a route without the version placeholder:
+```csharp
+var usersNeutral = usersApi.MapGroup("api/users")
+    .IsApiVersionNeutral();
+
+usersNeutral.MapDelete("{id:int}", (int id) =>
+{
+    return TypedResults.NoContent();
+});
 ```
 
 ## Running
@@ -34,3 +68,4 @@ dotnet run
 - Easy to cache and route
 - RESTful approach
 - Version is immediately visible in logs and monitoring
+- Lightweight and performant Minimal API approach

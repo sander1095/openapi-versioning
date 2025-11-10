@@ -1,25 +1,59 @@
-# Query Parameter / Header-Based API Versioning
+# Query Parameter / Header-Based API Versioning (Minimal APIs)
 
-This implementation uses query parameters or HTTP headers for API versioning. The version is NOT part of the URL path.
+This implementation uses query parameters or HTTP headers for API versioning with ASP.NET Core Minimal APIs. The version is NOT part of the URL path.
 
 ## Configuration
 
 Default is query string:
 ```csharp
-x.ApiVersionReader = new QueryStringApiVersionReader("api-version");
+options.ApiVersionReader = new QueryStringApiVersionReader("api-version");
 ```
 
 Alternative header-based:
 ```csharp
-x.ApiVersionReader = new HeaderApiVersionReader("x-api-version");
+options.ApiVersionReader = new HeaderApiVersionReader("x-api-version");
 ```
 
 Or combine both:
 ```csharp
-x.ApiVersionReader = ApiVersionReader.Combine(
+options.ApiVersionReader = ApiVersionReader.Combine(
     new QueryStringApiVersionReader("api-version"),
     new HeaderApiVersionReader("x-api-version")
 );
+```
+
+## Minimal API Implementation
+
+Minimal APIs use `MapGroup()` and `HasApiVersion()` to define versioned endpoints:
+
+```csharp
+var usersApi = app.NewVersionedApi("Users");
+
+var usersv1 = usersApi.MapGroup("api/users")
+    .HasApiVersion(1.0);
+
+var usersv2 = usersApi.MapGroup("api/users")
+    .HasApiVersion(2.0);
+
+usersv1.MapGet("", () =>
+{
+    return TypedResults.Ok(new[]
+    {
+        new Userv1(1, "John Doe", "johndoe@example.com"),
+        new Userv1(2, "Alice Dewett", "alice@example.com"),
+    });
+});
+```
+
+For version-neutral endpoints:
+```csharp
+var usersNeutral = usersApi.MapGroup("api/users")
+    .IsApiVersionNeutral();
+
+usersNeutral.MapDelete("{id:int}", (int id) =>
+{
+    return TypedResults.NoContent();
+});
 ```
 
 ## Running
@@ -53,3 +87,4 @@ curl -H "x-api-version: 1.0" http://localhost:5001/api/users
 - Easy to change versioning strategy
 - Supports multiple versioning methods simultaneously
 - Better for APIs with many versions
+- Lightweight and performant Minimal API approach
