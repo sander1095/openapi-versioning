@@ -8,6 +8,7 @@ This repository demonstrates different API versioning strategies in ASP.NET Core
 Minimal API implementations using `Asp.Versioning.Http`
 - **[queryheader-versioning/](./minimal-api/queryheader-versioning)** - Query string or HTTP header versioning (Port 5001)
 - **[url-versioning/](./minimal-api/url-versioning)** - URL segment versioning (Port 5000)
+- **[aot-versioning/](./minimal-api/aot-versioning)** - AOT-optimized query/header versioning (Port 5002)
 
 ### [controllers/](./controllers)
 Controller-based implementations using `Asp.Versioning.Mvc`
@@ -41,6 +42,10 @@ dotnet run
 
 # Minimal API - URL versioning
 cd minimal-api/url-versioning
+dotnet run
+
+# Minimal API - AOT-optimized Query/Header versioning
+cd minimal-api/aot-versioning
 dotnet run
 
 # Controllers - Query/Header versioning
