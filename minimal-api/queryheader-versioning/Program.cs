@@ -39,9 +39,14 @@ builder.Services.AddApiVersioning(options =>
 })
 .AddApiExplorer(options =>
 {
-    // add the versioned api explorer, which also adds IApiVersionDescriptionProvider service
+    // Calling "AddApiExplorer" is required for OpenAPI versioning to work correctly. 
+    // Without this, the generated OpenAPI documents will not be versioned.
+
+    // Add the versioned api explorer, which also adds IApiVersionDescriptionProvider service
     // note: the specified format code will format the version as "'v'major[.minor][-status]"
-    options.GroupNameFormat = "'v'VVV";
+    // More information: https://github.com/dotnet/aspnet-api-versioning/wiki/Version-Format#custom-api-version-format-strings
+    // Without this, the OpenAPI document will not generate correctly.
+    options.GroupNameFormat = "'v'VVVV";
 });
 
 var app = builder.Build();
