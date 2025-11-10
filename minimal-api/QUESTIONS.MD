@@ -1,4 +1,0 @@
-- Do we need to manually call `AddOpenApi` for each version, or can Asp.Versioning do this for us?
-  - ASSUMPTION: I don't think is possible, as Asp.Versioning has no knowledge of the OpenAPI package
-- What's the difference between `HasApiVersion` and `MapToApiVersion`?
-- Why does the v1 users return supproted versions v1, and users v2 return supported versions v1 and v2?
