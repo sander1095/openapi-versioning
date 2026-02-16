@@ -2,18 +2,32 @@
 
 This repository demonstrates different API versioning strategies in ASP.NET Core 10 using both **Minimal APIs** and **Controllers**.
 
+- **v8/** shows the legacy/previous approach.
+- **v10/** is the workspace for the new v10 approach.
+
 ## 📁 Repository Structure
 
-### [minimal-api/](./minimal-api)
-Minimal API implementations using `Asp.Versioning.Http`
-- **[queryheader-versioning/](./minimal-api/queryheader-versioning)** - Query string or HTTP header versioning (Port 5001)
-- **[url-versioning/](./minimal-api/url-versioning)** - URL segment versioning (Port 5000)
-- **[aot-versioning/](./minimal-api/aot-versioning)** - AOT-optimized query/header versioning (Port 5002)
+### [v8/](./v8) (legacy)
+Legacy implementations used to show how things were done previously.
 
-### [controllers/](./controllers)
-Controller-based implementations using `Asp.Versioning.Mvc`
-- **[queryheader-versioning/](./controllers/queryheader-versioning)** - Query string or HTTP header versioning (Port 5001)
-- **[url-versioning/](./controllers/url-versioning)** - URL segment versioning with V1/V2 folder structure (Port 5000)
+- **Minimal APIs** ([v8/minimal-api/](./v8/minimal-api))
+  - **[queryheader-versioning/](./v8/minimal-api/queryheader-versioning)** - Query string or HTTP header versioning (Port 5001)
+  - **[url-versioning/](./v8/minimal-api/url-versioning)** - URL segment versioning (Port 5000)
+  - **[aot-versioning/](./v8/minimal-api/aot-versioning)** - AOT-optimized query/header versioning (Port 5002)
+- **Controllers** ([v8/controllers/](./v8/controllers))
+  - **[queryheader-versioning/](./v8/controllers/queryheader-versioning)** - Query string or HTTP header versioning (Port 5001)
+  - **[url-versioning/](./v8/controllers/url-versioning)** - URL segment versioning with V1/V2 folder structure (Port 5000)
+
+### [v10/](./v10) (new approach)
+New v10 workspace with the same project structure, intended for the updated versioning library approach.
+
+- **Minimal APIs** ([v10/minimal-api/](./v10/minimal-api))
+  - **[queryheader-versioning/](./v10/minimal-api/queryheader-versioning)**
+  - **[url-versioning/](./v10/minimal-api/url-versioning)**
+  - **[aot-versioning/](./v10/minimal-api/aot-versioning)**
+- **Controllers** ([v10/controllers/](./v10/controllers))
+  - **[queryheader-versioning/](./v10/controllers/queryheader-versioning)**
+  - **[url-versioning/](./v10/controllers/url-versioning)**
 
 ## 🎯 Versioning Strategies
 
@@ -36,24 +50,28 @@ Version passed via query parameter or HTTP header
 Navigate to any project and run:
 
 ```bash
-# Minimal API - Query/Header versioning
-cd minimal-api/queryheader-versioning
+# v8 (legacy) - Minimal API - Query/Header versioning
+cd v8/minimal-api/queryheader-versioning
 dotnet run
 
-# Minimal API - URL versioning
-cd minimal-api/url-versioning
+# v8 (legacy) - Minimal API - URL versioning
+cd v8/minimal-api/url-versioning
 dotnet run
 
-# Minimal API - AOT-optimized Query/Header versioning
-cd minimal-api/aot-versioning
+# v8 (legacy) - Minimal API - AOT-optimized Query/Header versioning
+cd v8/minimal-api/aot-versioning
 dotnet run
 
-# Controllers - Query/Header versioning
-cd controllers/queryheader-versioning
+# v8 (legacy) - Controllers - Query/Header versioning
+cd v8/controllers/queryheader-versioning
 dotnet run
 
-# Controllers - URL versioning
-cd controllers/url-versioning
+# v8 (legacy) - Controllers - URL versioning
+cd v8/controllers/url-versioning
+dotnet run
+
+# v10 (new approach workspace) - Controllers - URL versioning
+cd v10/controllers/url-versioning
 dotnet run
 ```
 
@@ -98,10 +116,15 @@ DELETE http://localhost:5001/api/users/1  (version-neutral)
 ## 🛠 Technology Stack
 
 - **.NET**: 10.0 (Preview)
-- **API Versioning**: 8.1.0
-  - `Asp.Versioning.Http` (Minimal APIs)
-  - `Asp.Versioning.Mvc` (Controllers)
-  - `Asp.Versioning.Mvc.ApiExplorer` (OpenAPI integration)
+- **API Versioning**:
+  - **v8 folders**: 8.1.0
+    - `Asp.Versioning.Http` (Minimal APIs)
+    - `Asp.Versioning.Mvc` (Controllers)
+    - `Asp.Versioning.Mvc.ApiExplorer` (OpenAPI integration)
+  - **v10 folders**: 10.0.0-preview
+    - `Asp.Versioning.Http` (Minimal APIs)
+    - `Asp.Versioning.Mvc` (Controllers)
+    - `Asp.Versioning.Mvc.ApiExplorer` (OpenAPI integration)
 - **OpenAPI**: Microsoft.AspNetCore.OpenApi 10.0.0-rc.2
 
 ## 📚 API Versions

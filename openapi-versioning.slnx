@@ -8,13 +8,22 @@
     <File Path="README.md" />
   </Folder>
   <Folder Name="/src/" />
-  <Folder Name="/src/controllers/">
-    <Project Path="controllers/queryheader-versioning/queryheader-versioning.csproj" />
-    <Project Path="controllers/url-versioning/url-versioning.csproj" />
+  <Folder Name="/src/v8/controllers/">
+    <Project Path="v8/controllers/queryheader-versioning/queryheader-versioning.csproj" />
+    <Project Path="v8/controllers/url-versioning/url-versioning.csproj" />
   </Folder>
-  <Folder Name="/src/minimal-api/">
-    <Project Path="minimal-api/aot-versioning/aot-versioning.csproj" />
-    <Project Path="minimal-api/queryheader-versioning/queryheader-versioning.csproj" />
-    <Project Path="minimal-api/url-versioning/url-versioning.csproj" />
+  <Folder Name="/src/v8/minimal-api/">
+    <Project Path="v8/minimal-api/aot-versioning/aot-versioning.csproj" />
+    <Project Path="v8/minimal-api/queryheader-versioning/queryheader-versioning.csproj" />
+    <Project Path="v8/minimal-api/url-versioning/url-versioning.csproj" />
+  </Folder>
+  <Folder Name="/src/v10/controllers/">
+    <Project Path="v10/controllers/queryheader-versioning/queryheader-versioning.csproj" />
+    <Project Path="v10/controllers/url-versioning/url-versioning.csproj" />
+  </Folder>
+  <Folder Name="/src/v10/minimal-api/">
+    <Project Path="v10/minimal-api/aot-versioning/aot-versioning.csproj" />
+    <Project Path="v10/minimal-api/queryheader-versioning/queryheader-versioning.csproj" />
+    <Project Path="v10/minimal-api/url-versioning/url-versioning.csproj" />
   </Folder>
 </Solution>
