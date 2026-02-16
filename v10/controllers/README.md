@@ -35,12 +35,12 @@ Controllers use:
 
 ## Differences from Minimal APIs
 
-| Feature | Controllers | Minimal APIs |
-|---------|-------------|--------------|
-| **Package** | `Asp.Versioning.Mvc` | `Asp.Versioning.Http` |
-| **Routing** | `[Route]` attributes | `MapGroup()` |
-| **Version Declaration** | `[ApiVersion]` | `HasApiVersion()` |
-| **Endpoints** | Action methods | Lambda expressions |
+| Feature                 | Controllers          | Minimal APIs          |
+| ----------------------- | -------------------- | --------------------- |
+| **Package**             | `Asp.Versioning.Mvc` | `Asp.Versioning.Http` |
+| **Routing**             | `[Route]` attributes | `MapGroup()`          |
+| **Version Declaration** | `[ApiVersion]`       | `HasApiVersion()`     |
+| **Endpoints**           | Action methods       | Lambda expressions    |
 
 ## Running
 

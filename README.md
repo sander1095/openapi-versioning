@@ -77,14 +77,14 @@ dotnet run
 
 ## 📊 Implementation Comparison
 
-| Feature | Minimal APIs | Controllers |
-|---------|-------------|-------------|
-| **Package** | `Asp.Versioning.Http` | `Asp.Versioning.Mvc` |
-| **Version Declaration** | `HasApiVersion(1.0)` on groups | `[ApiVersion(1.0)]` on controller |
-| **Version Mapping** | `HasApiVersion()` on groups | `[MapToApiVersion(1.0)]` on actions |
-| **Version Neutral** | `IsApiVersionNeutral()` | `[ApiVersionNeutral]` |
-| **Routing** | `MapGroup()` with route templates | `[Route]` attributes |
-| **Endpoints** | Lambda expressions or local functions | Action methods returning `IActionResult` |
+| Feature                 | Minimal APIs                          | Controllers                              |
+| ----------------------- | ------------------------------------- | ---------------------------------------- |
+| **Package**             | `Asp.Versioning.Http`                 | `Asp.Versioning.Mvc`                     |
+| **Version Declaration** | `HasApiVersion(1.0)` on groups        | `[ApiVersion(1.0)]` on controller        |
+| **Version Mapping**     | `HasApiVersion()` on groups           | `[MapToApiVersion(1.0)]` on actions      |
+| **Version Neutral**     | `IsApiVersionNeutral()`               | `[ApiVersionNeutral]`                    |
+| **Routing**             | `MapGroup()` with route templates     | `[Route]` attributes                     |
+| **Endpoints**           | Lambda expressions or local functions | Action methods returning `IActionResult` |
 
 ## 🧪 Testing
 
