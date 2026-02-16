@@ -1,8 +1,14 @@
 # Questions About ASP.NET API Versioning (Asp.Versioning)
 
+## Breaking changes between .NET 8 and 10
+- Is it intentional that the same code between v8 and v10 cause a breaking change?
+  - No OpenAPI endpoints are returned in V10, though they are returned in V8
+  - See commit 15d66973fe2e7a39e702a4bd96ba8abf17a4f962
+
 ## OpenAPI Integration
 - Do we need to manually call `AddOpenApi` for each version, or can Asp.Versioning handle this automatically?
   - Assumption: Probably not possible, since Asp.Versioning has no awareness of the OpenAPI package.
+  - ANSWER: V10 allows this with `WithDocumentPerVersion()`
 
 ## Version Assignment Semantics
 - What’s the difference between `HasApiVersion` and `MapToApiVersion`?
