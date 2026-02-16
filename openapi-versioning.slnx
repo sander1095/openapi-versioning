@@ -6,6 +6,13 @@
   </Configurations>
   <Folder Name="/docs/">
     <File Path="README.md" />
+    <File Path="QUESTIONS.MD" />
+  </Folder>
+  <Folder Name="/config/">
+    <File Path=".gitignore" />
+    <File Path=".gitattributes" />
+    <File Path="v8/Directory.Packages.props" />
+    <File Path="v10/Directory.Packages.props" />
   </Folder>
   <Folder Name="/src/" />
   <Folder Name="/src/v8/controllers/">

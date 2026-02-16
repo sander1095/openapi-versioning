@@ -1,12 +1,12 @@
 <Project>
-  <PropertyGroup>
-    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-  </PropertyGroup>
+    <PropertyGroup>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageVersion Include="Asp.Versioning.Http" Version="8.1.0" />
-    <PackageVersion Include="Asp.Versioning.Mvc" Version="8.1.0" />
-    <PackageVersion Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
-    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.2" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageVersion Include="Asp.Versioning.Http" Version="8.1.0" />
+        <PackageVersion Include="Asp.Versioning.Mvc" Version="8.1.0" />
+        <PackageVersion Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
+        <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.2" />
+    </ItemGroup>
 </Project>
