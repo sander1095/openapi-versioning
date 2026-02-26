@@ -16,20 +16,24 @@
   </Folder>
   <Folder Name="/src/" />
   <Folder Name="/src/v8/controllers/">
+    <Project Path="v8/controllers/minimal-setup-no-openapi/minimal-setup-no-openapi.csproj" />
     <Project Path="v8/controllers/queryheader-versioning/queryheader-versioning.csproj" />
     <Project Path="v8/controllers/url-versioning/url-versioning.csproj" />
   </Folder>
   <Folder Name="/src/v8/minimal-api/">
     <Project Path="v8/minimal-api/aot-versioning/aot-versioning.csproj" />
+    <Project Path="v8/minimal-api/minimal-setup-no-openapi/minimal-setup-no-openapi.csproj" />
     <Project Path="v8/minimal-api/queryheader-versioning/queryheader-versioning.csproj" />
     <Project Path="v8/minimal-api/url-versioning/url-versioning.csproj" />
   </Folder>
   <Folder Name="/src/v10/controllers/">
+    <Project Path="v10/controllers/minimal-setup-no-openapi/minimal-setup-no-openapi.csproj" />
     <Project Path="v10/controllers/queryheader-versioning/queryheader-versioning.csproj" />
     <Project Path="v10/controllers/url-versioning/url-versioning.csproj" />
   </Folder>
   <Folder Name="/src/v10/minimal-api/">
     <Project Path="v10/minimal-api/aot-versioning/aot-versioning.csproj" />
+    <Project Path="v10/minimal-api/minimal-setup-no-openapi/minimal-setup-no-openapi.csproj" />
     <Project Path="v10/minimal-api/queryheader-versioning/queryheader-versioning.csproj" />
     <Project Path="v10/minimal-api/url-versioning/url-versioning.csproj" />
   </Folder>

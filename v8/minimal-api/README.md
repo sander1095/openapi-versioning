@@ -4,7 +4,13 @@ This folder contains Minimal API implementations of API versioning strategies us
 
 ## Projects
 
-### 1. queryheader-versioning
+### 1. minimal-setup-no-openapi
+Absolute minimum setup for `Asp.Versioning` with Minimal APIs — no OpenAPI integration.
+- **Port**: 5003
+- **Versioning**: Query string (`?api-version=1.0`)
+- [View README](./minimal-setup-no-openapi/README.md)
+
+### 2. queryheader-versioning
 Query parameter and header-based API versioning using Minimal APIs.
 - **Port**: 5001
 - **Versioning**: Query string (`?api-version=1.0`) or HTTP header (`x-api-version: 1.0`)

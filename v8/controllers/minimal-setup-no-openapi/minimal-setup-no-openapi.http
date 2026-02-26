@@ -1,0 +1,7 @@
+@host = http://localhost:5003
+
+### Get users v1
+GET {{host}}/api/users?api-version=1.0
+
+### Get users v2
+GET {{host}}/api/users?api-version=2.0

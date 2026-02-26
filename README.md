@@ -11,10 +11,12 @@ This repository demonstrates different API versioning strategies in ASP.NET Core
 Legacy implementations used to show how things were done previously.
 
 - **Minimal APIs** ([v8/minimal-api/](./v8/minimal-api))
+  - **[minimal-setup-no-openapi/](./v8/minimal-api/minimal-setup-no-openapi)** - Minimum viable versioning, no OpenAPI (Port 5003)
   - **[queryheader-versioning/](./v8/minimal-api/queryheader-versioning)** - Query string or HTTP header versioning (Port 5001)
   - **[url-versioning/](./v8/minimal-api/url-versioning)** - URL segment versioning (Port 5000)
   - **[aot-versioning/](./v8/minimal-api/aot-versioning)** - AOT-optimized query/header versioning (Port 5002)
 - **Controllers** ([v8/controllers/](./v8/controllers))
+  - **[minimal-setup-no-openapi/](./v8/controllers/minimal-setup-no-openapi)** - Minimum viable versioning, no OpenAPI (Port 5003)
   - **[queryheader-versioning/](./v8/controllers/queryheader-versioning)** - Query string or HTTP header versioning (Port 5001)
   - **[url-versioning/](./v8/controllers/url-versioning)** - URL segment versioning with V1/V2 folder structure (Port 5000)
 
@@ -22,10 +24,12 @@ Legacy implementations used to show how things were done previously.
 New v10 workspace with the same project structure, intended for the updated versioning library approach.
 
 - **Minimal APIs** ([v10/minimal-api/](./v10/minimal-api))
+  - **[minimal-setup-no-openapi/](./v10/minimal-api/minimal-setup-no-openapi)** - Minimum viable versioning, no OpenAPI (Port 5003)
   - **[queryheader-versioning/](./v10/minimal-api/queryheader-versioning)**
   - **[url-versioning/](./v10/minimal-api/url-versioning)**
   - **[aot-versioning/](./v10/minimal-api/aot-versioning)**
 - **Controllers** ([v10/controllers/](./v10/controllers))
+  - **[minimal-setup-no-openapi/](./v10/controllers/minimal-setup-no-openapi)** - Minimum viable versioning, no OpenAPI (Port 5003)
   - **[queryheader-versioning/](./v10/controllers/queryheader-versioning)**
   - **[url-versioning/](./v10/controllers/url-versioning)**
 
@@ -50,6 +54,10 @@ Version passed via query parameter or HTTP header
 Navigate to any project and run:
 
 ```bash
+# v8 (legacy) - Minimal API - No OpenAPI (minimum viable)
+cd v8/minimal-api/minimal-setup-no-openapi
+dotnet run
+
 # v8 (legacy) - Minimal API - Query/Header versioning
 cd v8/minimal-api/queryheader-versioning
 dotnet run
@@ -64,6 +72,10 @@ dotnet run
 
 # v8 (legacy) - Controllers - Query/Header versioning
 cd v8/controllers/queryheader-versioning
+dotnet run
+
+# v8 (legacy) - Controllers - No OpenAPI (minimum viable)
+cd v8/controllers/minimal-setup-no-openapi
 dotnet run
 
 # v8 (legacy) - Controllers - URL versioning
