@@ -8,9 +8,6 @@ builder.Services.ConfigureHttpJsonOptions(options =>
     options.SerializerOptions.TypeInfoResolverChain.Insert(0, AppJsonSerializerContext.Default);
 });
 
-builder.Services.AddOpenApi("v1");
-builder.Services.AddOpenApi("v2");
-
 builder.Services.AddApiVersioning(options =>
 {
     // Supported/deprecated API versions will be reported in response headers
@@ -52,12 +49,19 @@ builder.Services.AddApiVersioning(options =>
     // note: the specified format code will format the version as "'v'major[.minor][-status]"
     // More information: https://github.com/dotnet/aspnet-api-versioning/wiki/Version-Format#custom-api-version-format-strings
     // Without this, the OpenAPI document will not generate correctly.
-    options.GroupNameFormat = "'v'VVVV";
-});
+    options.GroupNameFormat = "'v'VVV";
+})
+// You must call "AddOpenApi" after "AddApiVersioning" to ensure you use Asp.Versioning's variant.
+// This variant of "AddOpenApi" is required to properly integrate with API versioning and generate versioned OpenAPI documents.
+.AddOpenApi();
 
 var app = builder.Build();
 
-app.MapOpenApi();
+// WithDocumentPerVersion() is an extension method provided by the Asp.Versioning.OpenApi package.
+// It configures the OpenAPI endpoint to generate a separate document for each API version.
+// This allows clients to retrieve documentation specific to the version of the API they are using.
+// This approach is preferable compared to having to call "services.AddOpenApi()" multiple times for each version, which can lead to maintenance issues and potential misconfigurations when adding new versions.
+app.MapOpenApi().WithDocumentPerVersion();
 
 var usersApi = app.NewVersionedApi("Users");
 var scoresApi = app.NewVersionedApi("Scores");
