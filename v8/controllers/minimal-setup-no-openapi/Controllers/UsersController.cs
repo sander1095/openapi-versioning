@@ -12,12 +12,12 @@ public class UsersController : ControllerBase
 {
     [HttpGet]
     [MapToApiVersion(1.0)]
-    public ActionResult<User[]> GetV1()
+    public ActionResult<UserV1[]> GetV1()
     {
         return Ok(new[]
         {
-            new User(1, "John Doe"),
-            new User(2, "Alice Dewett"),
+            new UserV1(1, "John Doe"),
+            new UserV1(2, "Alice Dewett"),
         });
     }
 

@@ -10,9 +10,9 @@ namespace url_versioning.Controllers.V1;
 public class ScoresController : ControllerBase
 {
     [HttpGet]
-    public ActionResult<Scorev1[]> Get()
+    public ActionResult<ScoreV1[]> Get()
     {
-        return Ok(new Scorev1[]
+        return Ok(new ScoreV1[]
         {
             new(1, 100),
             new(2, 150)

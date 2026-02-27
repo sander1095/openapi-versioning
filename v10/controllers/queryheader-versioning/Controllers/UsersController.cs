@@ -12,23 +12,23 @@ public class UsersController : ControllerBase
 {
     [HttpGet]
     [MapToApiVersion(1.0)]
-    public ActionResult<Userv1[]> GetV1()
+    public ActionResult<UserV1[]> GetV1()
     {
         return Ok(new[]
         {
-            new Userv1(1, "John Doe", "johndoe@example.com"),
-            new Userv1(2, "Alice Dewett", "alice@example.com"),
+            new UserV1(1, "John Doe", "johndoe@example.com"),
+            new UserV1(2, "Alice Dewett", "alice@example.com"),
         });
     }
 
     [HttpGet]
     [MapToApiVersion(2.0)]
-    public ActionResult<Userv2[]> GetV2()
+    public ActionResult<UserV2[]> GetV2()
     {
         return Ok(new[]
         {
-            new Userv2(1, "John Doe", "johndoe@example.com", new DateOnly(1990, 1, 1)),
-            new Userv2(2, "Alice Dewett", "alice@example.com", new DateOnly(1992, 2, 2)),
+            new UserV2(1, "John Doe", "johndoe@example.com", new DateOnly(1990, 1, 1)),
+            new UserV2(2, "Alice Dewett", "alice@example.com", new DateOnly(1992, 2, 2)),
         });
     }
 

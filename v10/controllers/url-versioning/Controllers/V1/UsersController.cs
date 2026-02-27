@@ -10,12 +10,12 @@ namespace url_versioning.Controllers.V1;
 public class UsersController : ControllerBase
 {
     [HttpGet]
-    public ActionResult<Userv1[]> Get()
+    public ActionResult<UserV1[]> Get()
     {
         return Ok(new[]
         {
-            new Userv1(1, "John Doe", "johndoe@example.com"),
-            new Userv1(2, "Alice Dewett", "alice@example.com"),
+            new UserV1(1, "John Doe", "johndoe@example.com"),
+            new UserV1(2, "Alice Dewett", "alice@example.com"),
         });
     }
 }

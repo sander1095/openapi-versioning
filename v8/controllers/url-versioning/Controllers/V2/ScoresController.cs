@@ -10,9 +10,9 @@ namespace url_versioning.Controllers.V2;
 public class ScoresController : ControllerBase
 {
     [HttpGet]
-    public ActionResult<Scorev2[]> Get()
+    public ActionResult<ScoreV2[]> Get()
     {
-        return Ok(new Scorev2[]
+        return Ok(new ScoreV2[]
         {
             new(1, 100, DateTimeOffset.UtcNow.AddDays(-2)),
             new(2, 150, DateTimeOffset.UtcNow.AddDays(-1))

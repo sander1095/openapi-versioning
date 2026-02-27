@@ -52,8 +52,8 @@ usersv1.MapGet("", () =>
 {
     return TypedResults.Ok(new[]
     {
-        new Userv1(1, "John Doe", "johndoe@example.com"),
-        new Userv1(2, "Alice Dewett", "alice@example.com"),
+        new UserV1(1, "John Doe", "johndoe@example.com"),
+        new UserV1(2, "Alice Dewett", "alice@example.com"),
     });
 });
 
@@ -61,8 +61,8 @@ usersv2.MapGet("", () =>
 {
     return TypedResults.Ok(new[]
     {
-        new Userv2(1, "John Doe", "johndoe@example.com", new DateOnly(1990, 1, 1)),
-        new Userv2(2, "Alice Dewett", "alice@example.com", new DateOnly(1992, 2, 2)),
+        new UserV2(1, "John Doe", "johndoe@example.com", new DateOnly(1990, 1, 1)),
+        new UserV2(2, "Alice Dewett", "alice@example.com", new DateOnly(1992, 2, 2)),
     });
 });
 
@@ -83,7 +83,7 @@ var scoresv2 = scoresApi.MapGroup("api/v{version:apiVersion}/scores")
 
 scoresv1.MapGet("", () =>
 {
-    return TypedResults.Ok(new Scorev1[]
+    return TypedResults.Ok(new ScoreV1[]
     {
         new(1, 100),
         new(2, 150)
@@ -92,7 +92,7 @@ scoresv1.MapGet("", () =>
 
 scoresv2.MapGet("", () =>
 {
-    return TypedResults.Ok(new Scorev2[]
+    return TypedResults.Ok(new ScoreV2[]
     {
         new(1, 100, DateTimeOffset.UtcNow.AddDays(-2)),
         new(2, 150, DateTimeOffset.UtcNow.AddDays(-1))
@@ -102,8 +102,8 @@ scoresv2.MapGet("", () =>
 
 app.Run();
 
-record Userv1(int Id, string Name, string Email);
-record Userv2(int Id, string Name, string Email, DateOnly BirthDate);
+record UserV1(int Id, string Name, string Email);
+record UserV2(int Id, string Name, string Email, DateOnly BirthDate);
 
-record Scorev1(int UserId, int Score);
-record Scorev2(int UserId, int Score, DateTimeOffset AchievedOn);
+record ScoreV1(int UserId, int Score);
+record ScoreV2(int UserId, int Score, DateTimeOffset AchievedOn);

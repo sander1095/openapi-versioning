@@ -13,8 +13,8 @@ var usersv2 = usersApi.MapGroup("api/users").HasApiVersion(2.0);
 
 usersv1.MapGet("", () => TypedResults.Ok(new[]
 {
-    new User(1, "John Doe"),
-    new User(2, "Alice Dewett"),
+    new UserV1(1, "John Doe"),
+    new UserV1(2, "Alice Dewett"),
 }));
 
 usersv2.MapGet("", () => TypedResults.Ok(new[]
@@ -25,5 +25,5 @@ usersv2.MapGet("", () => TypedResults.Ok(new[]
 
 app.Run();
 
-record User(int Id, string Name);
+record UserV1(int Id, string Name);
 record UserV2(int Id, string Name, DateOnly BirthDate);
