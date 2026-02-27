@@ -46,7 +46,7 @@ builder.Services.AddApiVersioning(options =>
     // note: the specified format code will format the version as "'v'major[.minor][-status]"
     // More information: https://github.com/dotnet/aspnet-api-versioning/wiki/Version-Format#custom-api-version-format-strings
     // Without this, the OpenAPI document will not generate correctly.
-    options.GroupNameFormat = "'v'VVVV";
+    options.GroupNameFormat = "'v'VVV";
 });
 
 var app = builder.Build();
