@@ -12,7 +12,7 @@ public class UsersController : ControllerBase
 {
     [HttpGet]
     [MapToApiVersion(1.0)]
-    public IActionResult GetV1()
+    public ActionResult<Userv1[]> GetV1()
     {
         return Ok(new[]
         {
@@ -23,7 +23,7 @@ public class UsersController : ControllerBase
 
     [HttpGet]
     [MapToApiVersion(2.0)]
-    public IActionResult GetV2()
+    public ActionResult<Userv2[]> GetV2()
     {
         return Ok(new[]
         {
@@ -34,7 +34,7 @@ public class UsersController : ControllerBase
 
     [HttpDelete("{id:int}")]
     [ApiVersionNeutral]
-    public IActionResult Delete(int id)
+    public ActionResult Delete(int id)
     {
         // Delete user logic here
         return NoContent();

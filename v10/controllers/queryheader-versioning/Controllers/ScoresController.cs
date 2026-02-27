@@ -12,7 +12,7 @@ public class ScoresController : ControllerBase
 {
     [HttpGet]
     [MapToApiVersion(1.0)]
-    public IActionResult GetV1()
+    public ActionResult<Scorev1[]> GetV1()
     {
         return Ok(new Scorev1[]
         {
@@ -23,7 +23,7 @@ public class ScoresController : ControllerBase
 
     [HttpGet]
     [MapToApiVersion(2.0)]
-    public IActionResult GetV2()
+    public ActionResult<Scorev2[]> GetV2()
     {
         return Ok(new Scorev2[]
         {

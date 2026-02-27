@@ -10,7 +10,7 @@ namespace url_versioning.Controllers;
 public class UsersVersionNeutralController : ControllerBase
 {
     [HttpDelete("{id:int}")]
-    public IActionResult Delete(int id)
+    public ActionResult Delete(int id)
     {
         // Delete user logic here
         return NoContent();
