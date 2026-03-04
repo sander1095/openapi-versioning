@@ -34,6 +34,7 @@ public class UsersController : ControllerBase
 
     [HttpDelete("{id:int}")]
     [ApiVersionNeutral]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
     public ActionResult Delete(int id)
     {
         // Delete user logic here
