@@ -31,4 +31,13 @@ public class UsersController : ControllerBase
             new UserV2(2, "Alice Dewett", new DateOnly(1992, 2, 2)),
         });
     }
+
+    [HttpDelete("{id:int}")]
+    [ApiVersionNeutral]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public ActionResult Delete(int id)
+    {
+        // Delete user logic here
+        return NoContent();
+    }
 }
