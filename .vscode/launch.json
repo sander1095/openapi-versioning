@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "name": "C#: V8 queryheader-versioning",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}\\v8\\minimal-api\\queryheader-versioning\\queryheader-versioning.csproj",
+            "launchConfigurationId": "TargetFramework=;http"
+        }
+    ]
+}
