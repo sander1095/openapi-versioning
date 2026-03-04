@@ -2,7 +2,7 @@
 
 This project demonstrates the **absolute minimum** code needed to use `Asp.Versioning` with ASP.NET Core Minimal APIs — **without any OpenAPI integration**.
 
-Compare this directly with `queryheader-versioning/` to see exactly what OpenAPI adds.
+Compare this directly with `queryheader-versioning-openapi/` to see exactly what OpenAPI adds.
 
 ## Port
 
