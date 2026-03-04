@@ -19,12 +19,24 @@
     <Project Path="v8/controllers/minimal-setup-no-openapi/minimal-setup-no-openapi.csproj" />
     <Project Path="v8/controllers/queryheader-versioning/queryheader-versioning.csproj" />
     <Project Path="v8/controllers/url-versioning/url-versioning.csproj" />
+    <Project
+      Path="v8/controllers/queryheader-scalar-versioning/queryheader-scalar-versioning.csproj" />
+    <Project
+      Path="v8/controllers/queryheader-swaggerui-versioning/queryheader-swaggerui-versioning.csproj" />
+    <Project Path="v8/controllers/url-scalar-versioning/url-scalar-versioning.csproj" />
+    <Project Path="v8/controllers/url-swaggerui-versioning/url-swaggerui-versioning.csproj" />
   </Folder>
   <Folder Name="/src/v8/minimal-api/">
     <Project Path="v8/minimal-api/aot-versioning/aot-versioning.csproj" />
     <Project Path="v8/minimal-api/minimal-setup-no-openapi/minimal-setup-no-openapi.csproj" />
     <Project Path="v8/minimal-api/queryheader-versioning/queryheader-versioning.csproj" />
     <Project Path="v8/minimal-api/url-versioning/url-versioning.csproj" />
+    <Project
+      Path="v8/minimal-api/queryheader-scalar-versioning/queryheader-scalar-versioning.csproj" />
+    <Project
+      Path="v8/minimal-api/queryheader-swaggerui-versioning/queryheader-swaggerui-versioning.csproj" />
+    <Project Path="v8/minimal-api/url-scalar-versioning/url-scalar-versioning.csproj" />
+    <Project Path="v8/minimal-api/url-swaggerui-versioning/url-swaggerui-versioning.csproj" />
   </Folder>
   <Folder Name="/src/v10/controllers/">
     <Project Path="v10/controllers/minimal-setup-no-openapi/minimal-setup-no-openapi.csproj" />

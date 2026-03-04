@@ -12,13 +12,21 @@ Legacy implementations used to show how things were done previously.
 
 - **Minimal APIs** ([v8/minimal-api/](./v8/minimal-api))
   - **[minimal-setup-no-openapi/](./v8/minimal-api/minimal-setup-no-openapi)** - Minimum viable versioning, no OpenAPI (Port 5003)
-  - **[queryheader-versioning/](./v8/minimal-api/queryheader-versioning)** - Query string or HTTP header versioning (Port 5001)
-  - **[url-versioning/](./v8/minimal-api/url-versioning)** - URL segment versioning (Port 5000)
+  - **[queryheader-versioning/](./v8/minimal-api/queryheader-versioning)** - Query string or HTTP header versioning with Scalar + Swagger UI (Port 5001)
+  - **[url-versioning/](./v8/minimal-api/url-versioning)** - URL segment versioning with Scalar (Port 5000)
   - **[aot-versioning/](./v8/minimal-api/aot-versioning)** - AOT-optimized query/header versioning (Port 5002)
+  - **[queryheader-scalar-versioning/](./v8/minimal-api/queryheader-scalar-versioning)** - Query/header versioning focused on Scalar nice experience (Port 5004)
+  - **[queryheader-swaggerui-versioning/](./v8/minimal-api/queryheader-swaggerui-versioning)** - Query/header versioning focused on Swagger UI nice experience (Port 5005)
+  - **[url-scalar-versioning/](./v8/minimal-api/url-scalar-versioning)** - URL versioning focused on Scalar nice experience (Port 5006)
+  - **[url-swaggerui-versioning/](./v8/minimal-api/url-swaggerui-versioning)** - URL versioning focused on Swagger UI nice experience (Port 5007)
 - **Controllers** ([v8/controllers/](./v8/controllers))
   - **[minimal-setup-no-openapi/](./v8/controllers/minimal-setup-no-openapi)** - Minimum viable versioning, no OpenAPI (Port 5003)
   - **[queryheader-versioning/](./v8/controllers/queryheader-versioning)** - Query string or HTTP header versioning (Port 5001)
   - **[url-versioning/](./v8/controllers/url-versioning)** - URL segment versioning with V1/V2 folder structure (Port 5000)
+  - **[queryheader-scalar-versioning/](./v8/controllers/queryheader-scalar-versioning)** - Query/header versioning focused on Scalar nice experience (Port 5008)
+  - **[queryheader-swaggerui-versioning/](./v8/controllers/queryheader-swaggerui-versioning)** - Query/header versioning focused on Swagger UI nice experience (Port 5009)
+  - **[url-scalar-versioning/](./v8/controllers/url-scalar-versioning)** - URL versioning focused on Scalar nice experience (Port 5010)
+  - **[url-swaggerui-versioning/](./v8/controllers/url-swaggerui-versioning)** - URL versioning focused on Swagger UI nice experience (Port 5011)
 
 ### [v10/](./v10) (new approach)
 New v10 workspace with the same project structure, intended for the updated versioning library approach.
