@@ -1,8 +1,8 @@
 # URL-Based Versioning with Scalar (Controllers)
 
-This project showcases the **nice experience** Scalar provides out-of-the-box with URL-based versioning using ASP.NET Core Controllers. Because the version is part of the URL path, Scalar automatically shows pre-filled, version-specific URLs — no extra parameter configuration required.
+This project adds Scalar as the API visualization tool for URL-based versioning with ASP.NET Core Controllers. Because the version is already embedded in the URL path, Scalar automatically shows version-specific URLs without any extra configuration.
 
-## The "Nice Experience"
+## Scalar Integration
 
 With URL versioning, the key setting is `SubstituteApiVersionInUrl = true`:
 

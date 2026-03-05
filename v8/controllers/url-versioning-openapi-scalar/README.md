@@ -1,8 +1,8 @@
 # URL-Based Versioning with Scalar (Controllers)
 
-This project showcases the **nice experience** Scalar provides out-of-the-box with URL-based versioning using ASP.NET Core Controllers. Because the version is part of the URL path, Scalar automatically shows pre-filled, version-specific URLs — no extra parameter configuration required.
+This project adds Scalar as the API visualization tool for URL-based versioning with ASP.NET Core Controllers. Because the version is already embedded in the URL path, Scalar automatically shows version-specific URLs without any extra configuration.
 
-## The "Nice Experience"
+## Scalar Integration
 
 With URL versioning, the key setting is `SubstituteApiVersionInUrl = true`:
 
@@ -21,13 +21,20 @@ builder.Services.AddApiVersioning(options =>
 
 The v1 OpenAPI document will have paths like `/api/v1/users` and v2 will show `/api/v2/users`. Scalar reads these paths directly — no manual example values needed.
 
-`AddDocuments` gives Scalar a version dropdown to switch between them:
+`AddDocument` gives Scalar a version dropdown to switch between them:
 
 ```csharp
 app.MapScalarApiReference(options =>
 {
-    var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
-    options.AddDocuments(provider.ApiVersionDescriptions.Select(d => d.GroupName));
+    var descriptions = app.DescribeApiVersions();
+
+    for (var i = 0; i < descriptions.Count; i++)
+    {
+        var description = descriptions[i];
+        var isDefault = i == descriptions.Count - 1;
+
+        options.AddDocument(description.GroupName, description.GroupName, isDefault: isDefault);
+    }
 });
 ```
 

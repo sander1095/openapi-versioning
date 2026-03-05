@@ -1,6 +1,6 @@
 # Query Parameter / Header Versioning with Scalar (Minimal APIs)
 
-This project showcases the changes needed to give Scalar a **nice experience** when using query/header-based API versioning with ASP.NET Core Minimal APIs. Specifically, Scalar pre-fills the `api-version` field with the correct value for each version document.
+This project adds Scalar as the API visualization tool for query/header-based versioning with ASP.NET Core Minimal APIs. Scalar renders a version-switcher dropdown so users can browse each API version's documentation.
 
 ## How Scalar is Set Up
 

@@ -45,10 +45,14 @@ By following this progression, every additional line in each project is motivate
   - **[queryheader-versioning-openapi/](./v10/minimal-api/queryheader-versioning-openapi)** — Query/header versioning + OpenAPI document (Port 5001)
   - **[url-versioning-openapi/](./v10/minimal-api/url-versioning-openapi)** — URL versioning + OpenAPI document (Port 5000)
   - **[aot-versioning-openapi/](./v10/minimal-api/aot-versioning-openapi)** — Query/header versioning with Native AOT (Port 5002)
+  - **[queryheader-versioning-openapi-scalar/](./v10/minimal-api/queryheader-versioning-openapi-scalar)** — Query/header + Scalar UI (Port 5011)
+  - **[url-versioning-openapi-scalar/](./v10/minimal-api/url-versioning-openapi-scalar)** — URL versioning + Scalar UI (Port 5012)
 - **Controllers** ([v10/controllers/](./v10/controllers))
   - **[minimal-setup-no-openapi/](./v10/controllers/minimal-setup-no-openapi)** — Baseline: versioning only, no OpenAPI (Port 5003)
   - **[queryheader-versioning-openapi/](./v10/controllers/queryheader-versioning-openapi)** — Query/header versioning + OpenAPI document (Port 5001)
   - **[url-versioning-openapi/](./v10/controllers/url-versioning-openapi)** — URL versioning + OpenAPI document (Port 5000)
+  - **[queryheader-versioning-openapi-scalar/](./v10/controllers/queryheader-versioning-openapi-scalar)** — Query/header + Scalar UI (Port 5008)
+  - **[url-versioning-openapi-scalar/](./v10/controllers/url-versioning-openapi-scalar)** — URL versioning + Scalar UI (Port 5009)
 
 ## 🎯 Versioning Strategies
 

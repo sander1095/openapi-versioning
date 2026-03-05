@@ -1,8 +1,8 @@
 # Query Parameter / Header Versioning with Scalar (Controllers)
 
-This project showcases the changes needed to give Scalar a **nice experience** when using query/header-based API versioning with ASP.NET Core Controllers. Specifically, Scalar pre-fills the `api-version` field with the correct value for each version document.
+This project adds Scalar as the API visualization tool for query/header-based versioning with ASP.NET Core Controllers. Scalar pre-fills the `api-version` field with the correct value for each version document, so users do not have to type it manually.
 
-## The "Nice Experience"
+## Scalar Integration
 
 The key is `OpenApiOptionsExtensions.ApplyApiVersionDescription`, which adds an `Example` value to the `api-version` parameter schema in each OpenAPI document:
 
@@ -26,9 +26,15 @@ Scalar reads the `example` field from the OpenAPI schema and pre-fills the `api-
 ```csharp
 app.MapScalarApiReference(options =>
 {
-    var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
-    // AddDocuments creates a version-switcher dropdown in Scalar.
-    options.AddDocuments(provider.ApiVersionDescriptions.Select(d => d.GroupName));
+    var descriptions = app.DescribeApiVersions();
+
+    for (var i = 0; i < descriptions.Count; i++)
+    {
+        var description = descriptions[i];
+        var isDefault = i == descriptions.Count - 1;
+
+        options.AddDocument(description.GroupName, description.GroupName, isDefault: isDefault);
+    }
 });
 ```
 
