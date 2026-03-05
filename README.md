@@ -46,13 +46,17 @@ By following this progression, every additional line in each project is motivate
   - **[url-versioning-openapi/](./v10/minimal-api/url-versioning-openapi)** — URL versioning + OpenAPI document (Port 5000)
   - **[aot-versioning-openapi/](./v10/minimal-api/aot-versioning-openapi)** — Query/header versioning with Native AOT (Port 5002)
   - **[queryheader-versioning-openapi-scalar/](./v10/minimal-api/queryheader-versioning-openapi-scalar)** — Query/header + Scalar UI (Port 5011)
+  - **[queryheader-versioning-openapi-swaggerui/](./v10/minimal-api/queryheader-versioning-openapi-swaggerui)** — Query/header + Swagger UI (Port 5015)
   - **[url-versioning-openapi-scalar/](./v10/minimal-api/url-versioning-openapi-scalar)** — URL versioning + Scalar UI (Port 5012)
+  - **[url-versioning-openapi-swaggerui/](./v10/minimal-api/url-versioning-openapi-swaggerui)** — URL versioning + Swagger UI (Port 5016)
 - **Controllers** ([v10/controllers/](./v10/controllers))
   - **[minimal-setup-no-openapi/](./v10/controllers/minimal-setup-no-openapi)** — Baseline: versioning only, no OpenAPI (Port 5003)
   - **[queryheader-versioning-openapi/](./v10/controllers/queryheader-versioning-openapi)** — Query/header versioning + OpenAPI document (Port 5001)
   - **[url-versioning-openapi/](./v10/controllers/url-versioning-openapi)** — URL versioning + OpenAPI document (Port 5000)
   - **[queryheader-versioning-openapi-scalar/](./v10/controllers/queryheader-versioning-openapi-scalar)** — Query/header + Scalar UI (Port 5008)
+  - **[queryheader-versioning-openapi-swaggerui/](./v10/controllers/queryheader-versioning-openapi-swaggerui)** — Query/header + Swagger UI (Port 5013)
   - **[url-versioning-openapi-scalar/](./v10/controllers/url-versioning-openapi-scalar)** — URL versioning + Scalar UI (Port 5009)
+  - **[url-versioning-openapi-swaggerui/](./v10/controllers/url-versioning-openapi-swaggerui)** — URL versioning + Swagger UI (Port 5014)
 
 ## 🎯 Versioning Strategies
 
