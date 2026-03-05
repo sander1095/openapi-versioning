@@ -1,0 +1,34 @@
+<Project>
+
+    <!--
+        Generate OpenAPI documents at build-time for every project whose name contains "openapi"
+        but is NOT a "no-openapi" baseline project (i.e. minimal-setup-no-openapi).
+
+        Output goes to <root>/generated-openapi-documents/<path-as-dashes>/
+        e.g. v10/controllers/queryheader-versioning-openapi →
+    generated-openapi-documents/v10-controllers-queryheader-versioning-openapi/v1.json
+    -->
+
+    <PropertyGroup
+        Condition="$(MSBuildProjectName.Contains('openapi')) AND !$(MSBuildProjectName.Contains('no-openapi'))">
+        <OpenApiGenerateDocumentsOnBuild>true</OpenApiGenerateDocumentsOnBuild>
+
+        <!-- Compute path of this project relative to the solution root -->
+        <_OpenApiRelativePath>$([MSBuild]::MakeRelative($(MSBuildThisFileDirectory),
+            $(MSBuildProjectDirectory)))</_OpenApiRelativePath>
+        <!-- Normalise separators to dashes and strip any trailing dash -->
+        <_OpenApiRelativePath>$(_OpenApiRelativePath.Replace('/', '-'))</_OpenApiRelativePath>
+        <_OpenApiRelativePath>$(_OpenApiRelativePath.Replace('\', '-'))</_OpenApiRelativePath>
+        <_OpenApiRelativePath>$(_OpenApiRelativePath.TrimEnd('-'))</_OpenApiRelativePath>
+
+        <OpenApiDocumentsDirectory>
+            $(MSBuildThisFileDirectory)generated-openapi-documents\$(_OpenApiRelativePath)</OpenApiDocumentsDirectory>
+    </PropertyGroup>
+
+    <ItemGroup
+        Condition="$(MSBuildProjectName.Contains('openapi')) AND !$(MSBuildProjectName.Contains('no-openapi'))">
+        <!-- Build-time OpenAPI document generation tool; not a runtime dependency -->
+        <PackageReference Include="Microsoft.Extensions.ApiDescription.Server" PrivateAssets="All" />
+    </ItemGroup>
+
+</Project>

@@ -82,7 +82,29 @@ dotnet run
 | **Routing**         | `MapGroup()` with route templates     | `[Route]` attributes                     |
 | **Endpoints**       | Lambda expressions or local functions | Action methods returning `ActionResult`  |
 
-## 🛠 Technology Stack
+## 🔧 Build-time OpenAPI Documents
+
+Every OpenAPI-enabled project automatically generates its OpenAPI document(s) at **build time** into:
+
+```
+generated-openapi-documents/
+  v10-controllers-queryheader-versioning-openapi/
+    queryheader-versioning-openapi.json       ← v1
+    queryheader-versioning-openapi_v2.json    ← v2
+  v10-controllers-url-versioning-openapi/
+    url-versioning-openapi.json
+    url-versioning-openapi_v2.json
+  v8-controllers-queryheader-versioning-openapi/
+    queryheader-versioning-openapi.json
+    queryheader-versioning-openapi_v2.json
+  ...
+```
+
+Each subfolder is named after the project's path (version → style → project), and contains one `.json` file per API version. This makes it easy to **diff OpenAPI documents across projects or branches** to see exactly what changed in the API surface.
+
+This is powered by [`Microsoft.Extensions.ApiDescription.Server`](https://www.nuget.org/packages/Microsoft.Extensions.ApiDescription.Server) configured in the root [`Directory.Build.props`](./Directory.Build.props). Projects are opted in by a simple name-based condition: the project name must contain `openapi` but must **not** contain `no-openapi`. This naturally excludes `minimal-setup-no-openapi` (matched by the negative clause) and `aot-versioning` (its name contains no `openapi` at all).
+
+## �🛠 Technology Stack
 
 - **.NET**: 10.0
 - **API Versioning**: `Asp.Versioning` 8.x (v8/) and 10.x (v10/)
