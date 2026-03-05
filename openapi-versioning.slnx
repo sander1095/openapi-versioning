@@ -16,6 +16,7 @@
     <File Path="v10/Directory.Packages.props" />
   </Folder>
   <Folder Name="/src/" />
+  <Folder Name="/src/v8/" />
   <Folder Name="/src/v8/controllers/">
     <Project Path="v8/controllers/minimal-setup-no-openapi/minimal-setup-no-openapi.csproj" />
     <Project Path="v8/controllers/queryheader-versioning-openapi/queryheader-versioning-openapi.csproj" />
@@ -35,8 +36,10 @@
     <Project Path="v8/minimal-api/url-versioning-openapi-scalar/url-versioning-openapi-scalar.csproj" />
     <Project Path="v8/minimal-api/url-versioning-openapi-swaggerui/url-versioning-openapi-swaggerui.csproj" />
   </Folder>
+  <Folder Name="/src/v10/" />
   <Folder Name="/src/v10/controllers/">
     <Project Path="v10/controllers/minimal-setup-no-openapi/minimal-setup-no-openapi.csproj" />
+    <Project Path="v10/controllers/queryheader-versioning-openapi-scalar/queryheader-versioning-openapi-scalar.csproj" />
     <Project Path="v10/controllers/queryheader-versioning-openapi/queryheader-versioning-openapi.csproj" />
     <Project Path="v10/controllers/url-versioning-openapi/url-versioning-openapi.csproj" />
   </Folder>
