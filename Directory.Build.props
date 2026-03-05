@@ -14,15 +14,13 @@
         <OpenApiGenerateDocumentsOnBuild>true</OpenApiGenerateDocumentsOnBuild>
 
         <!-- Compute path of this project relative to the solution root -->
-        <_OpenApiRelativePath>$([MSBuild]::MakeRelative($(MSBuildThisFileDirectory),
-            $(MSBuildProjectDirectory)))</_OpenApiRelativePath>
+        <_OpenApiRelativePath>$([MSBuild]::MakeRelative($(MSBuildThisFileDirectory), $(MSBuildProjectDirectory)))</_OpenApiRelativePath>
         <!-- Normalise separators to dashes and strip any trailing dash -->
         <_OpenApiRelativePath>$(_OpenApiRelativePath.Replace('/', '-'))</_OpenApiRelativePath>
         <_OpenApiRelativePath>$(_OpenApiRelativePath.Replace('\', '-'))</_OpenApiRelativePath>
         <_OpenApiRelativePath>$(_OpenApiRelativePath.TrimEnd('-'))</_OpenApiRelativePath>
 
-        <OpenApiDocumentsDirectory>
-            $(MSBuildThisFileDirectory)generated-openapi-documents\$(_OpenApiRelativePath)</OpenApiDocumentsDirectory>
+        <OpenApiDocumentsDirectory>$(MSBuildThisFileDirectory)generated-openapi-documents\$(_OpenApiRelativePath)</OpenApiDocumentsDirectory>
     </PropertyGroup>
 
     <ItemGroup

@@ -11,7 +11,7 @@ The projects are ordered intentionally — each one builds on the previous. Read
 3. **`queryheader-versioning-openapi-scalar`** / **`url-versioning-openapi-scalar`** — Adds Scalar as the OpenAPI UI, requiring a bit more configuration.
 4. **`queryheader-versioning-openapi-swaggerui`** / **`url-versioning-openapi-swaggerui`** — Same, but with Swagger UI. Slightly different setup from Scalar.
 
-`aot-versioning` is a side project that demonstrates Native AOT compilation alongside query/header versioning.
+`aot-versioning-openapi` is a side project that demonstrates Native AOT compilation alongside query/header versioning.
 
 ## Projects
 
@@ -33,11 +33,11 @@ URL segment-based API versioning with an OpenAPI document.
 - **Versioning**: URL path (`/api/v1/users`)
 - [View README](./url-versioning-openapi/README.md)
 
-### 4. aot-versioning
+### 4. aot-versioning-openapi
 Query/header versioning optimized for **Native AOT** compilation.
 - **Port**: 5002
 - **Versioning**: Query string or HTTP header
-- [View README](./aot-versioning/README.md)
+- [View README](./aot-versioning-openapi/README.md)
 
 ### 5. queryheader-versioning-openapi-scalar
 Query/header versioning with **Scalar** as the OpenAPI UI. Demonstrates `ApplyApiVersionDescription` pre-filling the `api-version` field in Scalar.

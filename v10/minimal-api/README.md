@@ -9,7 +9,7 @@ The projects are ordered intentionally — each one builds on the previous. Read
 1. **`minimal-setup-no-openapi`** — Pure versioning, nothing else. No OpenAPI, no extra config. The absolute baseline.
 2. **`queryheader-versioning-openapi`** / **`url-versioning-openapi`** — Adds an OpenAPI document. Compare with the baseline to see exactly what OpenAPI integration requires in v10.
 
-`aot-versioning` is a side project that demonstrates Native AOT compilation alongside query/header versioning.
+`aot-versioning-openapi` is a side project that demonstrates Native AOT compilation alongside query/header versioning.
 
 ## Projects
 
@@ -31,11 +31,11 @@ URL segment-based API versioning with an OpenAPI document.
 - **Versioning**: URL path (`/api/v1/users`)
 - [View README](./url-versioning-openapi/README.md)
 
-### 4. aot-versioning
+### 4. aot-versioning-openapi
 Query/header versioning optimized for **Native AOT** compilation.
 - **Port**: 5002
 - **Versioning**: Query string or HTTP header
-- [View README](./aot-versioning/README.md)
+- [View README](./aot-versioning-openapi/README.md)
 
 ## Key Features
 

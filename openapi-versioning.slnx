@@ -33,7 +33,7 @@
       Path="v8/controllers/url-versioning-openapi-swaggerui/url-versioning-openapi-swaggerui.csproj" />
   </Folder>
   <Folder Name="/src/v8/minimal-api/">
-    <Project Path="v8/minimal-api/aot-versioning/aot-versioning.csproj" />
+    <Project Path="v8/minimal-api/aot-versioning-openapi/aot-versioning-openapi.csproj" />
     <Project Path="v8/minimal-api/minimal-setup-no-openapi/minimal-setup-no-openapi.csproj" />
     <Project
       Path="v8/minimal-api/queryheader-versioning-openapi/queryheader-versioning-openapi.csproj" />
@@ -57,7 +57,7 @@
     <Project Path="v10/controllers/url-versioning-openapi/url-versioning-openapi.csproj" />
   </Folder>
   <Folder Name="/src/v10/minimal-api/">
-    <Project Path="v10/minimal-api/aot-versioning/aot-versioning.csproj" />
+    <Project Path="v10/minimal-api/aot-versioning-openapi/aot-versioning-openapi.csproj" />
     <Project Path="v10/minimal-api/minimal-setup-no-openapi/minimal-setup-no-openapi.csproj" />
     <Project
       Path="v10/minimal-api/queryheader-versioning-openapi/queryheader-versioning-openapi.csproj" />

@@ -24,7 +24,7 @@ By following this progression, every additional line in each project is motivate
   - **[minimal-setup-no-openapi/](./v8/minimal-api/minimal-setup-no-openapi)** — Baseline: versioning only, no OpenAPI (Port 5003)
   - **[queryheader-versioning-openapi/](./v8/minimal-api/queryheader-versioning-openapi)** — Query/header versioning + OpenAPI document (Port 5001)
   - **[url-versioning-openapi/](./v8/minimal-api/url-versioning-openapi)** — URL versioning + OpenAPI document (Port 5000)
-  - **[aot-versioning/](./v8/minimal-api/aot-versioning)** — Query/header versioning with Native AOT (Port 5002)
+  - **[aot-versioning-openapi/](./v8/minimal-api/aot-versioning-openapi)** — Query/header versioning with Native AOT (Port 5002)
   - **[queryheader-versioning-openapi-scalar/](./v8/minimal-api/queryheader-versioning-openapi-scalar)** — Query/header + Scalar UI (Port 5004)
   - **[queryheader-versioning-openapi-swaggerui/](./v8/minimal-api/queryheader-versioning-openapi-swaggerui)** — Query/header + Swagger UI (Port 5005)
   - **[url-versioning-openapi-scalar/](./v8/minimal-api/url-versioning-openapi-scalar)** — URL versioning + Scalar UI (Port 5006)
@@ -44,7 +44,7 @@ By following this progression, every additional line in each project is motivate
   - **[minimal-setup-no-openapi/](./v10/minimal-api/minimal-setup-no-openapi)** — Baseline: versioning only, no OpenAPI (Port 5003)
   - **[queryheader-versioning-openapi/](./v10/minimal-api/queryheader-versioning-openapi)** — Query/header versioning + OpenAPI document (Port 5001)
   - **[url-versioning-openapi/](./v10/minimal-api/url-versioning-openapi)** — URL versioning + OpenAPI document (Port 5000)
-  - **[aot-versioning/](./v10/minimal-api/aot-versioning)** — Query/header versioning with Native AOT (Port 5002)
+  - **[aot-versioning-openapi/](./v10/minimal-api/aot-versioning-openapi)** — Query/header versioning with Native AOT (Port 5002)
 - **Controllers** ([v10/controllers/](./v10/controllers))
   - **[minimal-setup-no-openapi/](./v10/controllers/minimal-setup-no-openapi)** — Baseline: versioning only, no OpenAPI (Port 5003)
   - **[queryheader-versioning-openapi/](./v10/controllers/queryheader-versioning-openapi)** — Query/header versioning + OpenAPI document (Port 5001)
@@ -84,25 +84,11 @@ dotnet run
 
 ## 🔧 Build-time OpenAPI Documents
 
-Every OpenAPI-enabled project automatically generates its OpenAPI document(s) at **build time** into:
-
-```
-generated-openapi-documents/
-  v10-controllers-queryheader-versioning-openapi/
-    queryheader-versioning-openapi.json       ← v1
-    queryheader-versioning-openapi_v2.json    ← v2
-  v10-controllers-url-versioning-openapi/
-    url-versioning-openapi.json
-    url-versioning-openapi_v2.json
-  v8-controllers-queryheader-versioning-openapi/
-    queryheader-versioning-openapi.json
-    queryheader-versioning-openapi_v2.json
-  ...
-```
+Every OpenAPI-enabled project automatically generates its OpenAPI document(s) at **build time** into `generated-openapi-documents/`
 
 Each subfolder is named after the project's path (version → style → project), and contains one `.json` file per API version. This makes it easy to **diff OpenAPI documents across projects or branches** to see exactly what changed in the API surface.
 
-This is powered by [`Microsoft.Extensions.ApiDescription.Server`](https://www.nuget.org/packages/Microsoft.Extensions.ApiDescription.Server) configured in the root [`Directory.Build.props`](./Directory.Build.props). Projects are opted in by a simple name-based condition: the project name must contain `openapi` but must **not** contain `no-openapi`. This naturally excludes `minimal-setup-no-openapi` (matched by the negative clause) and `aot-versioning` (its name contains no `openapi` at all).
+This is powered by [`Microsoft.Extensions.ApiDescription.Server`](https://www.nuget.org/packages/Microsoft.Extensions.ApiDescription.Server) configured in the root [`Directory.Build.props`](./Directory.Build.props). Projects are opted in by a simple name-based condition: the project name must contain `openapi` but must **not** contain `no-openapi`. This naturally excludes `minimal-setup-no-openapi` (matched by the negative clause).
 
 ## �🛠 Technology Stack
 
