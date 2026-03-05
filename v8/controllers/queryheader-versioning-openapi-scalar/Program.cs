@@ -59,8 +59,15 @@ app.MapOpenApi();
 // AddDocuments registers all known API versions so Scalar shows a dropdown to switch between them.
 app.MapScalarApiReference(options =>
 {
-    var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
-    options.AddDocuments(provider.ApiVersionDescriptions.Select(d => d.GroupName));
+    var descriptions = app.DescribeApiVersions();
+
+    for (var i = 0; i < descriptions.Count; i++)
+    {
+        var description = descriptions[i];
+        var isDefault = i == descriptions.Count - 1;
+
+        options.AddDocument(description.GroupName, description.GroupName, isDefault: isDefault);
+    }
 });
 
 app.MapControllers();

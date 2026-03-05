@@ -48,8 +48,15 @@ app.MapOpenApi();
 // and selecting v2 shows /api/v2/... paths — the version is already in the URL.
 app.MapScalarApiReference(options =>
 {
-    var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
-    options.AddDocuments(provider.ApiVersionDescriptions.Select(d => d.GroupName));
+    var descriptions = app.DescribeApiVersions();
+
+    for (var i = 0; i < descriptions.Count; i++)
+    {
+        var description = descriptions[i];
+        var isDefault = i == descriptions.Count - 1;
+
+        options.AddDocument(description.GroupName, description.GroupName, isDefault: isDefault);
+    }
 });
 
 app.MapControllers();
