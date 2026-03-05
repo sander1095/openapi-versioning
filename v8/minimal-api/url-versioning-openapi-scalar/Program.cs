@@ -44,6 +44,8 @@ app.MapOpenApi();
 // AddDocuments registers all known API versions so Scalar shows a dropdown to switch between them.
 // Because SubstituteApiVersionInUrl = true, selecting v1 shows /api/v1/... paths
 // and selecting v2 shows /api/v2/... paths — the version is already in the URL.
+// You can enrich your OpenAPI document with Scalar specific integrations if you wish.
+// To learn more: https://scalar.com/products/api-references/integrations/aspnetcore/openapi-extensions
 app.MapScalarApiReference(options =>
 {
     var descriptions = app.DescribeApiVersions();

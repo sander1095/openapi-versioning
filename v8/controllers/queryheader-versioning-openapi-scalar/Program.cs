@@ -57,6 +57,8 @@ app.MapOpenApi();
 
 // MapScalarApiReference sets up the Scalar UI at /scalar
 // AddDocuments registers all known API versions so Scalar shows a dropdown to switch between them.
+// You can enrich your OpenAPI document with Scalar specific integrations if you wish. To learn more:
+// https://scalar.com/products/api-references/integrations/aspnetcore/openapi-extensions
 app.MapScalarApiReference(options =>
 {
     var descriptions = app.DescribeApiVersions();
