@@ -46,7 +46,8 @@ app.MapControllers();
 // possibly due to the use of DescribeApiVersions()
 app.UseSwaggerUI(options =>
 {
-    foreach (var description in app.DescribeApiVersions())
+    // We reverse the list api versions so the newest version is rendered first
+    foreach (var description in app.DescribeApiVersions().Reverse())
     {
         options.SwaggerEndpoint(
             $"/openapi/{description.GroupName}.json",
