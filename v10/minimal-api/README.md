@@ -8,6 +8,7 @@ The projects are ordered intentionally — each one builds on the previous. Read
 
 1. **`minimal-setup-no-openapi`** — Pure versioning, nothing else. No OpenAPI, no extra config. The absolute baseline.
 2. **`queryheader-versioning-openapi`** / **`url-versioning-openapi`** — Adds an OpenAPI document. Compare with the baseline to see exactly what OpenAPI integration requires in v10.
+3. **`queryheader-versioning-openapi-scalar`** / **`url-versioning-openapi-scalar`** — Adds Scalar UI on top of the OpenAPI document.
 
 `aot-versioning-openapi` is a side project that demonstrates Native AOT compilation alongside query/header versioning.
 
@@ -37,6 +38,18 @@ Query/header versioning optimized for **Native AOT** compilation.
 - **Versioning**: Query string or HTTP header
 - [View README](./aot-versioning-openapi/README.md)
 
+### 5. queryheader-versioning-openapi-scalar
+Query parameter and header-based API versioning with Scalar UI.
+- **Port**: 5011
+- **Versioning**: Query string (`?api-version=1.0`) or HTTP header (`x-api-version: 1.0`)
+- [View README](./queryheader-versioning-openapi-scalar/README.md)
+
+### 6. url-versioning-openapi-scalar
+URL segment-based API versioning with Scalar UI.
+- **Port**: 5012
+- **Versioning**: URL path (`/api/v1/users`)
+- [View README](./url-versioning-openapi-scalar/README.md)
+
 ## Key Features
 
 Minimal APIs use:
@@ -61,6 +74,14 @@ dotnet run
 
 # Or
 cd url-versioning-openapi
+dotnet run
+
+# Or (with Scalar UI)
+cd queryheader-versioning-openapi-scalar
+dotnet run
+
+# Or (with Scalar UI)
+cd url-versioning-openapi-scalar
 dotnet run
 ```
 
