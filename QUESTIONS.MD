@@ -2,7 +2,7 @@
 
 
 ## Can't use WithDocumentPerVersion()
-- I'm trying to migrate the `v10` folder to the new way of working based on [the docs in the Release](https://github.com/dotnet/aspnet-api-versioning/releases/tag/v10.0.0-preview.1), but `WithDocumentPerVersion()` just doesn't want to compile.
+- I'm trying to migrate the `v10` folder to the new way of working based on [the docs in the Release](https://github.com/dotnet/aspnet-api-versioning/releases/tag/v10.0.0-preview.2), but `WithDocumentPerVersion()` just doesn't want to compile.
    - Even with multiple restarts and cleans, it doesn't want to work. Is this an issue on my end?
 
 ## Breaking changes between .NET 8 and 10
