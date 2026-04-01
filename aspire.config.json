@@ -1,0 +1,6 @@
+{
+  "appHost": {
+    "language": "csharp",
+    "path": "aspire/openapi-versioning.AppHost/openapi-versioning.AppHost.csproj"
+  }
+}

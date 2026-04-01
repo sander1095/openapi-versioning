@@ -1,0 +1,19 @@
+@host = http://localhost:5013
+
+### Get Users v1 (Query String)
+GET {{host}}/api/users?api-version=1.0
+
+### Get Users v2 (Query String)
+GET {{host}}/api/users?api-version=2.0
+
+### Delete User (version-neutral)
+DELETE {{host}}/api/users/1
+
+### Get Scores v1 (Query String)
+GET {{host}}/api/scores?api-version=1.0
+
+### Get Scores v2 (Query String)
+GET {{host}}/api/scores?api-version=2.0
+
+### OpenAPI v1
+GET {{host}}/openapi/v1.json

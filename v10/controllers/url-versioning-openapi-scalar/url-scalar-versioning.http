@@ -1,0 +1,19 @@
+@host = http://localhost:5009
+
+### Get Users v1
+GET {{host}}/api/v1/users
+
+### Get Users v2
+GET {{host}}/api/v2/users
+
+### Delete User (version-neutral)
+DELETE {{host}}/api/users/1
+
+### Get Scores v1
+GET {{host}}/api/v1/scores
+
+### Get Scores v2
+GET {{host}}/api/v2/scores
+
+### OpenAPI v1
+GET {{host}}/openapi/v1.json
