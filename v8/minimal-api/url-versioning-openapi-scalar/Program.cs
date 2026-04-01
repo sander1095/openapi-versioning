@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.OpenApi;
 using Microsoft.Extensions.Primitives;
 using Scalar.AspNetCore;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args).AddServiceDefaults();
 
 string[] versions = ["v1", "v2"];
 foreach (var description in versions)

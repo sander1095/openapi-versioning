@@ -8,4 +8,7 @@
     <ItemGroup>
         <PackageReference Include="Asp.Versioning.Mvc" />
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\aspire\openapi-versioning.ServiceDefaults\openapi-versioning.ServiceDefaults.csproj" />
+    </ItemGroup>
 </Project>

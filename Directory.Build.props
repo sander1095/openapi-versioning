@@ -10,7 +10,7 @@
     -->
 
     <PropertyGroup
-        Condition="$(MSBuildProjectName.Contains('openapi')) AND !$(MSBuildProjectName.Contains('no-openapi'))">
+        Condition="$(MSBuildProjectName.Contains('openapi')) AND !$(MSBuildProjectName.Contains('no-openapi')) AND '$(IsAspireSharedProject)' != 'true' AND '$(IsAspireHost)' != 'true'">
         <OpenApiGenerateDocumentsOnBuild>true</OpenApiGenerateDocumentsOnBuild>
 
         <!-- Compute path of this project relative to the solution root -->
@@ -24,7 +24,7 @@
     </PropertyGroup>
 
     <ItemGroup
-        Condition="$(MSBuildProjectName.Contains('openapi')) AND !$(MSBuildProjectName.Contains('no-openapi'))">
+        Condition="$(MSBuildProjectName.Contains('openapi')) AND !$(MSBuildProjectName.Contains('no-openapi')) AND '$(IsAspireSharedProject)' != 'true' AND '$(IsAspireHost)' != 'true'">
         <!-- Build-time OpenAPI document generation tool; not a runtime dependency -->
         <PackageReference Include="Microsoft.Extensions.ApiDescription.Server" PrivateAssets="All" />
     </ItemGroup>

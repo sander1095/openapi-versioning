@@ -74,7 +74,9 @@ Version passed via query parameter or HTTP header
 
 ## 🚀 Quick Start
 
-Navigate to any project folder within `v8/` or `v10/` and call `dotnet run`.
+**Run all projects at once** using [Aspire](https://aspire.dev) with `aspire run` after [installing the Aspire CLI](https://get.aspire.dev). Alternatively, call `dotnet run` in the `aspire/openapi-versioning.AppHost` project.
+
+**Run a single project** by navigating to any project folder within `v8/` or `v10/` and calling `dotnet run`.
 
 ## 📊 Minimal API vs Controllers
 
@@ -94,8 +96,9 @@ Each subfolder is named after the project's path (version → style → project)
 
 This is powered by [`Microsoft.Extensions.ApiDescription.Server`](https://www.nuget.org/packages/Microsoft.Extensions.ApiDescription.Server) configured in the root [`Directory.Build.props`](./Directory.Build.props).
 
-## �🛠 Technology Stack
+## 🛠️ Technology Stack
 
 - **.NET**: 10.0
 - **API Versioning**: `Asp.Versioning` 8.x (v8/) and 10.x (v10/)
 - **OpenAPI**: `Microsoft.AspNetCore.OpenApi` 10.x, `Swashbuckle.AspNetCore.SwaggerUI`, `Scalar.AspNetCore`
+- **Orchestration**: [Aspire](https://aspire.dev) 13.x

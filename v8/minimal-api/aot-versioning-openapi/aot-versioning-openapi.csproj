@@ -15,4 +15,8 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\aspire\openapi-versioning.ServiceDefaults\openapi-versioning.ServiceDefaults.csproj" />
+  </ItemGroup>
+
 </Project>
