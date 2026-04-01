@@ -51,7 +51,7 @@ app.MapControllers();
 // and selecting V2 shows /api/v2/... paths — the version is already in the URL.
 app.UseSwaggerUI(options =>
 {
-    // We reverse the list api versions so the newest version is rendered first
+    // We reverse the list of api versions so the newest version is rendered first
     foreach (var description in app.DescribeApiVersions().Reverse())
     {
         options.SwaggerEndpoint(
