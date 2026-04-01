@@ -42,10 +42,10 @@ builder.Services.AddApiVersioning(options =>
     // Calling "AddApiExplorer" is required for OpenAPI versioning to work correctly. 
     // Without this, the generated OpenAPI documents will not be versioned.
 
-    // Add the versioned api explorer, which also adds IApiVersionDescriptionProvider service
-    // note: the specified format code will format the version as "'v'major[.minor][-status]"
-    // More information: https://github.com/dotnet/aspnet-api-versioning/wiki/Version-Format#custom-api-version-format-strings
-    // Without this, the OpenAPI document will not generate correctly.
+    // GroupNameFormat specifies the format of the API version.
+    // Without this, versioning will use the literal group names. In our case, that would be 1.0.
+    // For compatibility with the "default" /openapi/v1.json behavior from Microsoft.AspNetCore.OpenApi, we use v'VVV' so we can retrieve it using v1.json, v1.0.json and more.
+    // See https://github.com/dotnet/aspnet-api-versioning/wiki/Version-Format#custom-api-version-format-strings for more information about formatting API versions.
     options.GroupNameFormat = "'v'VVV";
 })
 .AddMvc()
