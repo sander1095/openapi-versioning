@@ -74,10 +74,7 @@ Version passed via query parameter or HTTP header
 
 ## 🚀 Quick Start
 
-```bash
-cd v10/minimal-api/minimal-setup-no-openapi
-dotnet run
-```
+Navigate to any project folder within `v8/` or `v10/` and call `dotnet run`.
 
 ## 📊 Minimal API vs Controllers
 
@@ -85,7 +82,6 @@ dotnet run
 | ------------------- | ------------------------------------- | ---------------------------------------- |
 | **Package**         | `Asp.Versioning.Http`                 | `Asp.Versioning.Mvc`                     |
 | **Version declare** | `HasApiVersion(1.0)` on groups        | `[ApiVersion(1.0)]` on controller        |
-| **Version map**     | `HasApiVersion()` on groups           | `[MapToApiVersion(1.0)]` on actions      |
 | **Version neutral** | `IsApiVersionNeutral()`               | `[ApiVersionNeutral]`                    |
 | **Routing**         | `MapGroup()` with route templates     | `[Route]` attributes                     |
 | **Endpoints**       | Lambda expressions or local functions | Action methods returning `ActionResult`  |
@@ -96,10 +92,10 @@ Every OpenAPI-enabled project automatically generates its OpenAPI document(s) at
 
 Each subfolder is named after the project's path (version → style → project), and contains one `.json` file per API version. This makes it easy to **diff OpenAPI documents across projects or branches** to see exactly what changed in the API surface.
 
-This is powered by [`Microsoft.Extensions.ApiDescription.Server`](https://www.nuget.org/packages/Microsoft.Extensions.ApiDescription.Server) configured in the root [`Directory.Build.props`](./Directory.Build.props). Projects are opted in by a simple name-based condition: the project name must contain `openapi` but must **not** contain `no-openapi`. This naturally excludes `minimal-setup-no-openapi` (matched by the negative clause).
+This is powered by [`Microsoft.Extensions.ApiDescription.Server`](https://www.nuget.org/packages/Microsoft.Extensions.ApiDescription.Server) configured in the root [`Directory.Build.props`](./Directory.Build.props).
 
 ## �🛠 Technology Stack
 
 - **.NET**: 10.0
 - **API Versioning**: `Asp.Versioning` 8.x (v8/) and 10.x (v10/)
-- **OpenAPI**: `Microsoft.AspNetCore.OpenApi` 10.x
+- **OpenAPI**: `Microsoft.AspNetCore.OpenApi` 10.x, `Swashbuckle.AspNetCore.SwaggerUI`, `Scalar.AspNetCore`

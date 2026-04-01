@@ -66,14 +66,7 @@ Controllers use:
 
 ## Running
 
-```bash
-cd queryheader-versioning-openapi
-dotnet run
-
-# Or
-cd url-versioning-openapi
-dotnet run
-```
+Call `dotnet run` in any project folder to start that API.
 
 ## Learn More
 

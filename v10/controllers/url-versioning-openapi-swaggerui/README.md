@@ -32,7 +32,7 @@ app.MapControllers();
 
 app.UseSwaggerUI(options =>
 {
-    foreach (var description in app.DescribeApiVersions())
+    foreach (var description in app.DescribeApiVersions().Reverse())
     {
         options.SwaggerEndpoint(
             $"/openapi/{description.GroupName}.json",

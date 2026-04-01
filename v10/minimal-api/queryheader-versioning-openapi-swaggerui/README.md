@@ -13,7 +13,7 @@ app.MapOpenApi().WithDocumentPerVersion();
 // possibly due to the use of DescribeApiVersions()
 app.UseSwaggerUI(options =>
 {
-    foreach (var description in app.DescribeApiVersions())
+    foreach (var description in app.DescribeApiVersions().Reverse())
     {
         options.SwaggerEndpoint(
             $"/openapi/{description.GroupName}.json",

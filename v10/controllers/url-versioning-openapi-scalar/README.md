@@ -21,7 +21,7 @@ builder.Services.AddApiVersioning(options =>
 
 The v1 OpenAPI document will have paths like `/api/v1/users` and v2 will show `/api/v2/users`. Scalar reads these paths directly — no manual example values needed.
 
-`AddDocuments` gives Scalar a version dropdown to switch between them:
+`AddDocument` gives Scalar a version dropdown to switch between them:
 
 ```csharp
 app.MapScalarApiReference(options =>
