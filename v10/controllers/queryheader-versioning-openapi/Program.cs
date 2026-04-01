@@ -50,6 +50,7 @@ builder.Services.AddApiVersioning(options =>
 .AddMvc()
 // You must call "AddOpenApi" after "AddApiVersioning" to ensure you use Asp.Versioning's variant.
 // This variant of "AddOpenApi" is required to properly integrate with API versioning and generate versioned OpenAPI documents.
+// You can call an overload of "AddOpenApi" to customize the OpenAPI generation, just like you would with Microsoft.AspNetCore.OpenApi's "AddOpenApi".
 .AddOpenApi();
 
 var app = builder.Build();
