@@ -77,6 +77,9 @@
 *.yaml     text
 *.yml      text
 
+# Generated OpenAPI documents should remain stable across Windows/Linux toolchains.
+generated-openapi-documents/**/*.json text eol=lf
+
 # Archives
 *.7z       binary
 *.bz       binary
