@@ -27,7 +27,7 @@ app.MapScalarApiReference(options =>
 dotnet run
 ```
 
-Open http://localhost:5011/scalar to explore the API. Switch between v1 and v2 using the version dropdown.
+Open http://localhost:5023/scalar to explore the API. Switch between v1 and v2 using the version dropdown.
 
 ## Example Requests
 
@@ -36,15 +36,15 @@ Use the included `.http` files to test:
 - `header.http` — HTTP header versioning
 
 ### Query String
-- Users v1: `GET http://localhost:5011/api/users?api-version=1.0`
-- Users v2: `GET http://localhost:5011/api/users?api-version=2.0`
-- Scores v1: `GET http://localhost:5011/api/scores?api-version=1.0`
-- Scores v2: `GET http://localhost:5011/api/scores?api-version=2.0`
+- Users v1: `GET http://localhost:5023/api/users?api-version=1.0`
+- Users v2: `GET http://localhost:5023/api/users?api-version=2.0`
+- Scores v1: `GET http://localhost:5023/api/scores?api-version=1.0`
+- Scores v2: `GET http://localhost:5023/api/scores?api-version=2.0`
 
 ### Version-Neutral
-- Delete User: `DELETE http://localhost:5011/api/users/{id}`
+- Delete User: `DELETE http://localhost:5023/api/users/{id}`
 
 ## OpenAPI Documents
 
-- v1: `GET http://localhost:5011/openapi/v1.json`
-- v2: `GET http://localhost:5011/openapi/v2.json`
+- v1: `GET http://localhost:5023/openapi/v1.json`
+- v2: `GET http://localhost:5023/openapi/v2.json`

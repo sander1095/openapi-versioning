@@ -42,6 +42,6 @@ dotnet run
 Use the `minimal-setup-no-openapi.http` file, or:
 
 ```
-GET http://localhost:5003/api/users?api-version=1.0
-GET http://localhost:5003/api/users?api-version=2.0
+GET http://localhost:5018/api/users?api-version=1.0
+GET http://localhost:5018/api/users?api-version=2.0
 ```

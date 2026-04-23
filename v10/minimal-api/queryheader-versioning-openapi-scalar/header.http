@@ -1,4 +1,4 @@
-@host = http://localhost:5011
+@host = http://localhost:5023
 
 ### Get Users v1 (Header)
 GET {{host}}/api/users

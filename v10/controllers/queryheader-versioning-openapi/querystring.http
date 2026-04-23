@@ -1,4 +1,4 @@
-@host = http://localhost:5001
+@host = http://localhost:5026
 
 ### Get Users v1 (Query String)
 GET {{host}}/api/users?api-version=1.0

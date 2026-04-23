@@ -40,7 +40,7 @@ app.MapScalarApiReference(options =>
 dotnet run
 ```
 
-Open http://localhost:5008/scalar to explore the API. Switch between v1 and v2 to see each document's version-specific schema.
+Open http://localhost:5027/scalar to explore the API. Switch between v1 and v2 to see each document's version-specific schema.
 
 ## Example Requests
 
@@ -49,15 +49,15 @@ Use the included `.http` files to test:
 - `header.http` — HTTP header versioning
 
 ### Query String
-- Users v1: `GET http://localhost:5008/api/users?api-version=1.0`
-- Users v2: `GET http://localhost:5008/api/users?api-version=2.0`
-- Scores v1: `GET http://localhost:5008/api/scores?api-version=1.0`
-- Scores v2: `GET http://localhost:5008/api/scores?api-version=2.0`
+- Users v1: `GET http://localhost:5027/api/users?api-version=1.0`
+- Users v2: `GET http://localhost:5027/api/users?api-version=2.0`
+- Scores v1: `GET http://localhost:5027/api/scores?api-version=1.0`
+- Scores v2: `GET http://localhost:5027/api/scores?api-version=2.0`
 
 ### Version-Neutral
-- Delete User: `DELETE http://localhost:5008/api/users/{id}`
+- Delete User: `DELETE http://localhost:5027/api/users/{id}`
 
 ## OpenAPI Documents
 
-- v1: `GET http://localhost:5008/openapi/v1.json`
-- v2: `GET http://localhost:5008/openapi/v2.json`
+- v1: `GET http://localhost:5027/openapi/v1.json`
+- v2: `GET http://localhost:5027/openapi/v2.json`

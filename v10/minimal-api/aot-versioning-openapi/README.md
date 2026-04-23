@@ -55,18 +55,18 @@ Use the included `.http` files to test:
 - `header.http` - HTTP header versioning examples
 
 ### Query String Examples
-- Users v1: `GET http://localhost:5002/api/users?api-version=1.0`
-- Users v2: `GET http://localhost:5002/api/users?api-version=2.0`
-- Scores v1: `GET http://localhost:5002/api/scores?api-version=1.0`
-- Scores v2: `GET http://localhost:5002/api/scores?api-version=2.0`
+- Users v1: `GET http://localhost:5020/api/users?api-version=1.0`
+- Users v2: `GET http://localhost:5020/api/users?api-version=2.0`
+- Scores v1: `GET http://localhost:5020/api/scores?api-version=1.0`
+- Scores v2: `GET http://localhost:5020/api/scores?api-version=2.0`
 
 ### Version-Neutral Endpoint
-- Delete User: `DELETE http://localhost:5002/api/users/{id}`
+- Delete User: `DELETE http://localhost:5020/api/users/{id}`
 
 ## OpenAPI Documents
 
-- v1: `GET http://localhost:5002/openapi/v1.json`
-- v2: `GET http://localhost:5002/openapi/v2.json`
+- v1: `GET http://localhost:5020/openapi/v1.json`
+- v2: `GET http://localhost:5020/openapi/v2.json`
 
 ## Benefits
 

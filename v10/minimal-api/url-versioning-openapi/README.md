@@ -27,18 +27,18 @@ dotnet run
 Use the included `url-versioning.http` file to test all endpoints.
 
 ### URL Examples
-- Users v1: `GET http://localhost:5000/api/v1/users`
-- Users v2: `GET http://localhost:5000/api/v2/users`
-- Scores v1: `GET http://localhost:5000/api/v1/scores`
-- Scores v2: `GET http://localhost:5000/api/v2/scores`
+- Users v1: `GET http://localhost:5024/api/v1/users`
+- Users v2: `GET http://localhost:5024/api/v2/users`
+- Scores v1: `GET http://localhost:5024/api/v1/scores`
+- Scores v2: `GET http://localhost:5024/api/v2/scores`
 
 ### Version-Neutral Endpoint
-- Delete User: `DELETE http://localhost:5000/api/users/{id}`
+- Delete User: `DELETE http://localhost:5024/api/users/{id}`
 
 ## OpenAPI Documents
 
-- v1: `GET http://localhost:5000/openapi/v1.json`
-- v2: `GET http://localhost:5000/openapi/v2.json`
+- v1: `GET http://localhost:5024/openapi/v1.json`
+- v2: `GET http://localhost:5024/openapi/v2.json`
 
 ## Benefits
 

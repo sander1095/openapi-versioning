@@ -44,22 +44,22 @@ app.MapScalarApiReference(options =>
 dotnet run
 ```
 
-Open http://localhost:5009/scalar to explore the API. Use the version dropdown — each version shows the correct versioned URL path automatically.
+Open http://localhost:5029/scalar to explore the API. Use the version dropdown — each version shows the correct versioned URL path automatically.
 
 ## Example Requests
 
 Use the included `url-scalar-versioning.http` file to test all endpoints.
 
 ### URL Examples
-- Users v1: `GET http://localhost:5009/api/v1/users`
-- Users v2: `GET http://localhost:5009/api/v2/users`
-- Scores v1: `GET http://localhost:5009/api/v1/scores`
-- Scores v2: `GET http://localhost:5009/api/v2/scores`
+- Users v1: `GET http://localhost:5029/api/v1/users`
+- Users v2: `GET http://localhost:5029/api/v2/users`
+- Scores v1: `GET http://localhost:5029/api/v1/scores`
+- Scores v2: `GET http://localhost:5029/api/v2/scores`
 
 ### Version-Neutral
-- Delete User: `DELETE http://localhost:5009/api/users/{id}`
+- Delete User: `DELETE http://localhost:5029/api/users/{id}`
 
 ## OpenAPI Documents
 
-- v1: `GET http://localhost:5009/openapi/v1.json`
-- v2: `GET http://localhost:5009/openapi/v2.json`
+- v1: `GET http://localhost:5029/openapi/v1.json`
+- v2: `GET http://localhost:5029/openapi/v2.json`
