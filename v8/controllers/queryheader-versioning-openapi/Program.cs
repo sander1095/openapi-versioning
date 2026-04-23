@@ -23,7 +23,7 @@ builder.Services.AddApiVersioning(options =>
     // Enabling this feature is a trade-off between convenience and explicitness.
     // Changing the default version could break clients that aren't using versioning.
     // Consider your API's audience and usage patterns when deciding to enable this.
-    options.AssumeDefaultVersionWhenUnspecified = false;
+    options.AssumeDefaultVersionWhenUnspecified = true;
 
     // API versioning by query string (default approach)
     // Using query string: ?api-version=1.0

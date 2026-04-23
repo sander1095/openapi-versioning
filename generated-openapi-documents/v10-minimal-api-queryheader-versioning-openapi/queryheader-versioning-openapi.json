@@ -16,7 +16,6 @@
             "name": "api-version",
             "in": "query",
             "description": "The requested API version",
-            "required": true,
             "schema": {
               "enum": [
                 "1.0"
@@ -76,7 +75,6 @@
             "name": "api-version",
             "in": "query",
             "description": "The requested API version",
-            "required": true,
             "schema": {
               "enum": [
                 "1.0"
