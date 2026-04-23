@@ -1,19 +1,21 @@
 # Query Parameter / Header Versioning with Scalar (Controllers)
 
-This project adds Scalar as the API visualization tool for query/header-based versioning with ASP.NET Core Controllers. Scalar pre-fills the `api-version` field with the correct value for each version document, so users do not have to type it manually.
+This project adds Scalar as the API visualization tool for query/header-based versioning with ASP.NET Core Controllers. The generated OpenAPI document now constrains `api-version` to the single valid value for each version document, so no custom transformer is needed.
 
 ## Scalar Integration
 
-In v10, `Asp.Versioning.OpenApi` automatically sets a `default` value on the `api-version` parameter schema in each generated document. For the `v1` document this looks like:
+In v10, `Asp.Versioning.OpenApi` automatically limits the `api-version` parameter schema to the correct version for each generated document. For the `v1` document this now looks like:
 
 ```json
 "schema": {
-  "type": "string",
-  "default": "1.0"
+  "enum": [
+    "1.0"
+  ],
+  "type": "string"
 }
 ```
 
-Scalar reads this `default` field and pre-fills the `api-version` input automatically — no custom transformer is needed. This contrasts with v8, which required a custom `ApplyApiVersionDescription` extension to add an `example` field.
+Scalar can use this generated schema directly — no custom transformer is needed. This contrasts with v8, which required a custom `ApplyApiVersionDescription` extension to add an `example` field.
 
 `AddDocument` creates a version-switcher dropdown in Scalar:
 
@@ -38,7 +40,7 @@ app.MapScalarApiReference(options =>
 dotnet run
 ```
 
-Open http://localhost:5008/scalar to explore the API. Switch between v1 and v2 — notice the `api-version` field is already filled in.
+Open http://localhost:5008/scalar to explore the API. Switch between v1 and v2 to see each document's version-specific schema.
 
 ## Example Requests
 

@@ -1,4 +1,4 @@
-<Project Sdk="Aspire.AppHost.Sdk/13.2.2">
+<Project Sdk="Aspire.AppHost.Sdk/13.2.3">
 
   <ItemGroup>
     <ProjectReference Include="..\..\v10\controllers\minimal-setup-no-openapi\minimal-setup-no-openapi.csproj" />

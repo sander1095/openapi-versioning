@@ -18,8 +18,10 @@
             "description": "The requested API version",
             "required": true,
             "schema": {
-              "type": "string",
-              "default": "1.0"
+              "enum": [
+                "1.0"
+              ],
+              "type": "string"
             }
           }
         ],
@@ -76,8 +78,10 @@
             "description": "The requested API version",
             "required": true,
             "schema": {
-              "type": "string",
-              "default": "1.0"
+              "enum": [
+                "1.0"
+              ],
+              "type": "string"
             }
           }
         ],
